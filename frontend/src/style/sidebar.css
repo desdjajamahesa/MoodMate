@@ -1,0 +1,159 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #97bcd6;
+  --bg-secondary: #ffb4c0;
+  --nav-color: #c3d8f7;
+  --light-text: #f7f7f7;
+  --dark-text: #a8c2e3;
+}
+
+/* ! HEADER SIDEBAR CODE */
+.header-sidebar {
+  height: max-content;
+  padding-top: 1.5rem;
+}
+
+.header-sidebar .sidebar-logo {
+  width: 70px;
+  height: 70px;
+}
+
+.welcome-text {
+  color: var(--light-text);
+}
+
+.tagline-moodmate {
+  font-size: smaller;
+  color: var(--light-text);
+  opacity: .6;
+}
+
+.divider {
+  color: var(--light-text);
+}
+/* ! END CODE */
+
+/* ! SIDEBAR MENU CODE */
+.sidebar-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: linear-gradient(to bottom, #97bcd6, /* Warna biru pastel */ #a8c2e3, /* Warna biru-abu muda */ #ffb4c0, /* Warna pink pastel */ #fddde6, /* Warna pink muda */ #f7f7f7 /* Warna putih keabu-abuan */);
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.8);
+}
+
+.sidebar-menu {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-menu-list {
+  margin-top: 3rem;
+  width: 100%;
+  font-size: 1.25rem;
+}
+
+.sidebar-link {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  color: var(--light-text);
+  text-decoration: none;
+  position: relative;
+  text-shadow: 
+    1px 1px 4px rgba(255, 255, 255, 0.3), /* Lapisan shadow lembut */
+    0px 0px 6px rgba(255, 255, 255, 0.2); /* Layer tambahan untuk cahaya halus */
+  transition: color 0.4 ease;
+}
+
+.sidebar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Garis di bagian bawah teks */
+  left: 50%; /* Mulai dari tengah */
+  width: 0; /* Lebar awal 0 */
+  height: 2px; /* Ketebalan garis */
+  background-color: #ffffff; /* Warna garis putih */
+  transform: translateX(-50%); /* Pusatkan garis */
+  transition: width 0.4s ease; /* Animasi munculnya garis */
+}
+
+.sidebar-link.active {
+  color: rgba(152, 180, 192, 1);
+  font-weight: bold;
+}
+
+.sidebar-link:hover::after {
+  width: 55%; /* Garis memanjang penuh */
+}
+
+/* Styling untuk menu yang aktif */
+.sidebar-link.active {
+  color: var(--dark-text); /* Warna teks aktif */
+  font-weight: bold;
+}
+
+/* Garis tetap ada untuk menu aktif */
+.sidebar-link.active::after {
+  width: 55%; /* Garis penuh untuk menu aktif */
+}
+/* .sidebar-link:hover {
+  color: rgba(152, 180, 192, .5);
+} */
+
+.sidebar-menu-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+.sidebar-link.logout {
+  display: block;
+  margin: 20px auto; /* Posisi tengah secara horizontal */
+  padding: 5px 50px; /* Ruang di dalam button */
+  text-align: center;
+  color: var(--dark-text); /* Warna teks putih */
+  background-color: transparent; /* Warna merah (Bootstrap Danger) */
+  border: 2px solid var(--bg-secondary); /* Border dengan warna yang sama */
+  border-radius: 20px; /* Border radius untuk bentuk tombol */
+  text-decoration: none; /* Hilangkan garis bawah */
+  transition: all 0.5s ease; /* Animasi smooth */
+}
+
+.sidebar-link.logout:hover {
+  background-color: transparent; /* Warna transparan saat hover */
+  color: #dc3545; /* Warna teks berubah menjadi merah */
+}
+/* ! END CODE */
+
+/* ! FOOTER SIDEBAR CODE */
+.footer-sidebar {
+  margin-top: auto; 
+}
+
+.footer-text {
+  font-size: .8rem;
+  font-weight: bold;
+  margin-bottom: -0.75rem;
+  color: #323232;
+}
+
+.creator {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* ! END CODE */
