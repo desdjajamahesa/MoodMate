@@ -1,59 +1,51 @@
-/* Wrapper Main Content */
+/* ! WRAPPER MAIN CONTENT CODE */
 .mood-tracker-wrapper {
   height: 100vh;
-  background: radial-gradient(circle at center, #97bcd6, #ffb4c0, #f8d6e6);
+  background: radial-gradient(circle, #97bcd6 20%, #ffb4c0 70%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+/* ! END CODE */
 
-/* Main Content Card */
+/* ! MAIN CONTENT MOOD TRACKER CODE */
 .main-content-mood-tracker {
-  padding: 3rem; /* Tambah padding untuk card */
-  border-radius: 20px; /* Lebih bulat */
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Lebih tegas */
-  width: 35%; /* Perbesar ukuran card */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 70%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Warna card dengan sedikit transparansi */
-  transition: all 0.3s ease; /* Tambah animasi untuk transisi */
 }
+/* ! END CODE */
 
 /* Mood Image */
 .mood-image img {
   border-radius: 50%;
-  border: 5px solid #6c757d; /* Perbesar border */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Tambah efek shadow */
-  width: 120px; /* Lebih besar */
-  height: 120px;
+  border: 3px solid #6c757d;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Range Slider */
 .mood-slider input {
-  width: 90%; /* Lebar slider menyesuaikan */
-  margin: 0 auto; /* Tengah */
+  width: 100%;
 }
 
 /* Mood Description Text */
-.mood-description h6 {
+.mood-description h5 {
   color: #495057;
-  font-size: 1.25rem; /* Lebih besar */
   font-weight: bold;
-  margin-top: 1rem;
 }
 
 /* Button Next */
 .next-button button {
   background-color: #007bff;
   border: none;
-  border-radius: 25px;
-  padding: 0.75rem 3rem;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
   transition: all 0.3s ease;
 }
 
 .next-button button:hover {
   background-color: #0056b3;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
