@@ -56,7 +56,12 @@ if (!isset($_SESSION['user'])) {
                     <p>This is the content related to stress article 1.</p>
                     <button class="btn btn-secondary openPdfBtn" type="button" data-target="pdfContainer1">Open PDF</button>
                     <div id="pdfContainer1" class="pdf-container" style="display: none;">
-                      <iframe src="../path/to/stressArticle1.pdf" width="100%" height="500px" frameborder="0"></iframe>
+                    <iframe 
+    src="https://docs.google.com/document/d/1fFE1kpv7xj_O7bQhbaNtvT6hzLrILPf2" 
+    width="100%" 
+    height="500px" 
+    frameborder="0">
+  </iframe>
                     </div>
                   </div>
                 </div>
@@ -191,78 +196,6 @@ if (!isset($_SESSION['user'])) {
                 </div>
               </div>
 
-              <!-- Content for Hypnosis -->
-              <div id="hypnosisContent" class="session-content" style="display: none;">
-                <!-- Hypnosis Article 1 -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="card-title">Hypnosis Article 1</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>This is the content related to hypnosis article 1.</p>
-                    <button class="btn btn-secondary openPdfBtn" type="button" data-target="pdfContainer1">Open PDF</button>
-                    <div id="pdfContainer1" class="pdf-container" style="display: none;">
-                      <iframe src="../path/to/hypnosisArticle1.pdf" width="100%" height="500px" frameborder="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Hypnosis Article 2 -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="card-title">Hypnosis Article 2</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>This is the content related to hypnosis article 2.</p>
-                    <button class="btn btn-secondary openPdfBtn" type="button" data-target="pdfContainer2">Open PDF</button>
-                    <div id="pdfContainer2" class="pdf-container" style="display: none;">
-                      <iframe src="../path/to/hypnosisArticle2.pdf" width="100%" height="500px" frameborder="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Hypnosis Article 3 -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="card-title">Hypnosis Article 3</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>This is the content related to hypnosis article 3.</p>
-                    <button class="btn btn-secondary openPdfBtn" type="button" data-target="pdfContainer3">Open PDF</button>
-                    <div id="pdfContainer3" class="pdf-container" style="display: none;">
-                      <iframe src="../path/to/hypnosisArticle3.pdf" width="100%" height="500px" frameborder="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Hypnosis Article 4 (Video Link) -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="card-title">Hypnosis Article 4: Video on Hypnosis Techniques</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>This article contains a video on hypnosis techniques.</p>
-                    <button class="btn btn-primary openVideoBtn" type="button" data-target="videoContainer1">Watch Video</button>
-                    <div id="videoContainer1" class="video-container" style="display: none;">
-                      <iframe src="https://www.youtube.com/embed/exampleHypnosisVideo1" width="100%" height="500px" frameborder="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Hypnosis Article 5 -->
-                <div class="card">
-                  <div class="card-header">
-                    <h5 class="card-title">Hypnosis Article 5</h5>
-                  </div>
-                  <div class="card-body">
-                    <p>This is the content related to hypnosis article 5.</p>
-                    <button class="btn btn-secondary openPdfBtn" type="button" data-target="pdfContainer5">Open PDF</button>
-                    <div id="pdfContainer5" class="pdf-container" style="display: none;">
-                      <iframe src="../path/to/hypnosisArticle5.pdf" width="100%" height="500px" frameborder="0"></iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

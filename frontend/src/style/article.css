@@ -1,0 +1,181 @@
+/* Global Styling */
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #97bcd6;
+  --bg-secondary: #ffb4c0;
+  --nav-color: #c3d8f7;
+  --light-text: #f7f7f7;
+  --dark-text: #a8c2e3;
+}
+
+/* General Styles for Article Section */
+.main-content-article {
+  background: var(--bg-primary);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+}
+
+.header-content-article h4 {
+  color: var(--dark-text);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Buttons for Switching Modes */
+button {
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+#stressBtn {
+  background-color: #17a2b8;
+  color: white;
+}
+
+#anxietyBtn {
+  background-color: #ffc107;
+  color: white;
+}
+
+#hypnosisBtn {
+  background-color: #dc3545;
+  color: white;
+}
+
+#stressBtn:hover,
+#anxietyBtn:hover,
+#hypnosisBtn:hover {
+  background-color: #007bff;
+}
+
+/* Articles Section */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: var(--bg-secondary);
+  color: var(--light-text);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body {
+  background-color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-body p {
+  font-size: 1rem;
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+}
+
+/* Styling for PDF Container */
+.pdf-container {
+  display: none;
+  margin-top: 1rem;
+}
+
+.openPdfBtn {
+  background-color: var(--bg-secondary);
+  color: var(--light-text);
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.openPdfBtn:hover {
+  background-color: var(--bg-primary);
+}
+.container-fluid {
+    padding: 0;
+  }
+  
+  .row {
+    margin: 0;
+  }
+  
+  .col-9.offset-3 {
+    padding-left: 0;
+    margin-left: 0;
+    width: calc(100% - 250px); /* Sesuaikan dengan lebar sidebar */
+  }
+  
+  @media (max-width: 768px) {
+    .col-9.offset-3 {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+/* Article Layout - Responsive */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.col-md-4 {
+  flex: 1 1 calc(33.333% - 1.5rem);
+  max-width: calc(33.333% - 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content-article {
+    padding: 1rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  button {
+    font-size: 0.875rem;
+  }
+}
+
+/* Footer Sidebar */
+
+.footer-text {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: -0.75rem;
+  color: #323232;
+}
+
+.creator {
+  margin: 0;
+  padding: 15px 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
