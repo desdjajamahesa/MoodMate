@@ -38,6 +38,19 @@ if (!isset($_SESSION['user'])) {
             <h4>JOURNAL</h4>
           </div>
           <div class="main-content-journal mt-4">
+            <form id="journalForm">
+              <div class="mb-3">
+                <label for="journalEntry" class="form-label">Catatan Hari ini</label>
+                <textarea class="form-control" id="journalEntry" rows="10" placeholder="Write your thoughts here..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Simpan Catatan</button>
+            </form>
+            <div class="mt-5">
+              <h5>Journal History</h5>
+              <ul id="journalHistory" class="list-group">
+                <!-- Journal entries will be dynamically added here -->
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -45,6 +58,8 @@ if (!isset($_SESSION['user'])) {
     </div>
   </div>
 
+  <!-- ... (keep the existing script tags) ... -->
+  <script src="../src/js/journal.js"></script>
   <!-- ! LINK BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
