@@ -47,12 +47,7 @@ if (!$conn) {
             overflow: hidden;
         }
 
-        .container-fluid {
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-        }
-
+       
         /* Sidebar agar tetap responsif */
         .sidebar {
             flex: 1;
@@ -103,38 +98,45 @@ if (!$conn) {
                 </div>
 
                 <!-- Journal History -->
-                <div class="journal-history col-4">
-    <h5>Journal History</h5>
-    <ul id="journalHistory" class="list-group">
-        <?php
-        $user_id = $_SESSION['user_id'];
-        $query = "SELECT id, content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "i", $user_id);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+                <!-- Journal History -->
+<!-- Journal History -->
+<div class=" col-4 mt-3">
+    <button class="btn btn-primary w-100 text-start mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#journalHistoryCollapse" aria-expanded="false" aria-controls="journalHistoryCollapse">
+        Lihat History Jurnal
+    </button>
+    <div class="collapse" id="journalHistoryCollapse">
+        <h5>Journal History</h5>
+        <div id="journalHistory">
+            <?php
+            $user_id = $_SESSION['user_id'];
+            $query = "SELECT id, content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "i", $user_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
 
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $journalId = $row['id'];
-                echo '<li class="list-group-item">';
-                echo '<button class="btn btn-link text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJournal' . $journalId . '" aria-expanded="false" aria-controls="collapseJournal' . $journalId . '">';
-                echo '<strong>' . date('d M Y, H:i', strtotime($row['created_at'])) . '</strong>';
-                echo '</button>';
-                echo '<div class="collapse mt-2" id="collapseJournal' . $journalId . '">';
-                echo '<div class="card card-body">';
-                echo htmlspecialchars($row['content']);
-                echo '</div>';
-                echo '</div>';
-                echo '</li>';
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $journalId = $row['id'];
+                    echo '<button class="btn btn-primary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJournal' . $journalId . '" aria-expanded="false" aria-controls="collapseJournal' . $journalId . '">';
+
+                    echo '<strong>' . date('d M Y, H:i', strtotime($row['created_at'])) . '</strong>';
+                    echo '</button>';
+                    echo '<div class="collapse" id="collapseJournal' . $journalId . '">';
+                    echo '<div class="card card-body">';
+                    echo htmlspecialchars($row['content']);
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="alert alert-info text-center">Belum ada catatan jurnal</div>';
             }
-        } else {
-            echo '<li class="list-group-item text-muted text-center">Belum ada catatan jurnal</li>';
-        }
-        mysqli_stmt_close($stmt);
-        ?>
-    </ul>
+            mysqli_stmt_close($stmt);
+            ?>
+        </div>
+    </div>
 </div>
+
             </div>
         </div>
     </div>

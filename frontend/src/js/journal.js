@@ -24,3 +24,18 @@ document.getElementById('journalForm').addEventListener('submit', function (e) {
     })
     .catch(error => console.error('Error:', error));
 });
+<script>
+    document.getElementById('toggleHistory').addEventListener('click', function() {
+        var journalHistory = document.getElementById('journalHistory');
+        var button = document.getElementById('toggleHistory');
+
+        // Toggle visibility
+        if (journalHistory.classList.contains('d-none')) {
+            journalHistory.classList.remove('d-none');
+            button.textContent = 'Sembunyikan History';  // Update button text
+        } else {
+            journalHistory.classList.add('d-none');
+            button.textContent = 'Tampilkan History';  // Update button text
+        }
+    });
+</script>
