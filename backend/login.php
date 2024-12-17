@@ -23,8 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($row = mysqli_fetch_assoc($result)) {
         // Verifikasi password
         if (password_verify($password, $row['password'])) {
-            $_SESSION['user'] = $row['email'];
+            // Store more user details in session for flexibility
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_email'] = $row['email'];
             $_SESSION['user_name'] = $row['name'];
+            
+            // Optional: Add a login timestamp
+            $_SESSION['last_login'] = time();
+
             header("Location: ../frontend/dashboard/mood-tracker.php");
             exit();
         } else {

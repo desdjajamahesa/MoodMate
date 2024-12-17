@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
   header("Location: ../login.php");
   exit();
 }
@@ -27,18 +28,17 @@ if (!isset($_SESSION['user'])) {
 <body>
   <div class="container-fluid">
     <div class="row">
-      <!-- ! SIDEBAR OPEN CODE -->
+      <!-- Sidebar remains the same -->
       <?php include 'sidebar.php' ?>
-      <!-- ! SIDEBAR END CODE -->
 
-      <!-- ! JOURNAL CONTENT OPEN CODE -->
+      <!-- Journal Content -->
       <div class="col-9 journal-wrapper">
         <div class="journal">
           <div class="header-content-journal text-end mt-5">
-            <h4>JOURNAL</h4>
+            <h4>JOURNAL - Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?></h4>
           </div>
           <div class="main-content-journal mt-4">
-            <form id="journalForm">
+            <form id="journalForm" data-user-id="<?php echo $_SESSION['user_id']; ?>">
               <div class="mb-3">
                 <label for="journalEntry" class="form-label">Catatan Hari ini</label>
                 <textarea class="form-control" id="journalEntry" rows="10" placeholder="Write your thoughts here..."></textarea>
@@ -54,13 +54,11 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div>
-      <!-- ! JOURNAL CONTENT END CODE -->
     </div>
   </div>
 
-  <!-- ... (keep the existing script tags) ... -->
+  <!-- Scripts remain the same -->
   <script src="../src/js/journal.js"></script>
-  <!-- ! LINK BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
