@@ -3,18 +3,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
-include 'includes/db_config.php';
+include '../includes/db_config.php';  // Adjust path if needed
 
 header('Content-Type: application/json');
 
-// Log untuk debug
+// Function for logging debug information
 function debugLog($message) {
     error_log(date('[Y-m-d H:i:s] ') . $message . "\n", 3, 'debug_history.log');
 }
 
-debugLog("Get Journal History Script Started");
-
-// Cek koneksi database
+// Check database connection
 if (!$conn) {
     debugLog("Database Connection Failed: " . mysqli_connect_error());
     echo json_encode([
@@ -25,9 +23,7 @@ if (!$conn) {
     exit();
 }
 
-// Cek session
-debugLog("Session User ID: " . ($_SESSION['user_id'] ?? 'NOT SET'));
-
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     debugLog("User not authenticated");
     echo json_encode([
@@ -40,47 +36,36 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 debugLog("Fetching journals for User ID: " . $userId);
 
-// Query untuk mengambil history jurnal
-$query = "SELECT id, content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC LIMIT 10";
-$stmt = mysqli_prepare($conn, $query);
+// Query to fetch journal history
+$query = "SELECT * FROM journals WHERE user_id = ? ORDER BY created_at DESC LIMIT 10";
+$stmt = $conn->prepare($query);
 
 if (!$stmt) {
-    debugLog("Prepare statement failed: " . mysqli_error($conn));
+    debugLog("Prepare statement failed: " . $conn->error);
     echo json_encode([
         'success' => false, 
         'message' => 'Gagal menyiapkan query',
-        'error' => mysqli_error($conn)
+        'error' => $conn->error
     ]);
     exit();
 }
 
-mysqli_stmt_bind_param($stmt, "i", $userId);
-$executeResult = mysqli_stmt_execute($stmt);
-
-if (!$executeResult) {
-    debugLog("Execute failed: " . mysqli_stmt_error($stmt));
-    echo json_encode([
-        'success' => false, 
-        'message' => 'Gagal mengeksekusi query',
-        'error' => mysqli_stmt_error($stmt)
-    ]);
-    exit();
-}
-
-$result = mysqli_stmt_get_result($stmt);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if (!$result) {
-    debugLog("Get result failed: " . mysqli_error($conn));
+    debugLog("Fetch failed: " . $conn->error);
     echo json_encode([
         'success' => false, 
-        'message' => 'Gagal mendapatkan hasil',
-        'error' => mysqli_error($conn)
+        'message' => 'Gagal mengambil jurnal',
+        'error' => $conn->error
     ]);
     exit();
 }
 
 $journals = [];
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = $result->fetch_assoc()) {
     $journals[] = [
         'id' => $row['id'],
         'content' => $row['content'],
@@ -92,10 +77,9 @@ debugLog("Journals Found: " . count($journals));
 
 echo json_encode([
     'success' => true, 
-    'journals' => $journals,
-    'user_id' => $userId,
-    'journal_count' => count($journals)
+    'journals' => $journals
 ]);
 
-mysqli_stmt_close($stmt);
+$stmt->close();
+$conn->close();
 exit();

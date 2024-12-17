@@ -35,12 +35,14 @@
   padding: 1.5rem;
   text-align: center;
   border-bottom: 1px solid #ddd;
+  text-align: justify;
 }
 
 .card-body p {
   font-size: 1rem;
   color: var(--dark-text);
   margin-bottom: 1rem;
+  text-align: justify;
 }
 
 /* Buttons for Switching Modes */
@@ -83,4 +85,82 @@ button:hover {
     flex: 1 1 100%;  /* Stack the articles on smaller screens */
     max-width: 100%;
   }
+}
+/* Menata artikel dengan margin dan padding */
+.card-body {
+  max-height: 400px; /* Batas tinggi artikel */
+  overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
+  padding-right: 10px; /* Memberikan ruang untuk scroll */
+  text-align: justify; /* Meratakan teks ke kiri dan kanan */
+  line-height: 1.8; /* Menambah jarak antar baris agar lebih nyaman dibaca */
+}
+
+/* Menambahkan ruang antara judul artikel dan konten */
+.article-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px; /* Menambahkan jarak bawah pada judul */
+}
+
+
+/* Menata pengantar artikel */
+.article-introduction {
+  font-size: 1.1rem;
+  margin-bottom: 15px; /* Menambahkan jarak bawah pada introduction */
+  font-style: italic;
+  color: #555; /* Menambahkan warna lebih soft untuk pengantar */
+}
+/* Menata konten artikel */
+.article-content {
+  font-size: 1rem;
+  margin-bottom: 20px; /* Menambahkan jarak bawah antar konten */
+}
+.card {
+  margin-bottom: 20px; /* Menambahkan jarak bawah antar card */
+}
+
+.collapse-video {
+  margin-top: 10px;
+}
+
+.card-header h1 {
+  font-size: 1.6rem;
+  margin-bottom: 15px; /* Menambahkan jarak bawah pada header */
+}
+/* Menata tombol untuk video dan PDF */
+.card-body .btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Menambahkan gaya pada pagination */
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+  padding-left: 0;
+}
+
+.page-item .page-link {
+  font-size: 1rem;
+  padding: 8px 16px;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Responsif untuk gambar dan video */
+iframe {
+  width: 100%;
+  height: 300px;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }

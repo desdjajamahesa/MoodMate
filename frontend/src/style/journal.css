@@ -1,34 +1,76 @@
+body {
+  background-color: var(--bg-primary);
+}
 .journal-wrapper {
-    padding: 20px;
-  }
-  
-  .journal {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header-content-journal h4 {
-    color: #007bff;
-  }
-  
-  #journalEntry {
-    resize: vertical;
-  }
-  
-  #journalHistory {
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  
-  #journalHistory .list-group-item {
-    margin-bottom: 10px;
-  }
-  
-  #journalHistory .list-group-item strong {
-    display: block;
-    margin-bottom: 5px;
-    color: #6c757d;
-  }
-  
+  background-color: var(--nav-color);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+}
+.journal-header {
+  background-color: var(--bg-secondary);
+  color: var(--light-text);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+#journalForm {
+  background-color: var(--light-text);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+#journalEntry {
+  resize: none;
+  background-color: #f9f9f9;
+  border-color: var(--nav-color);
+  border-radius: 10px;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+.journal-history {
+  background-color: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+.journal-history-title {
+  color: var(--dark-text);
+  border-bottom: 2px solid var(--dark-text);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.journal-history-item {
+  background-color: var(--nav-color);
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+.journal-history-item:hover {
+  transform: scale(1.02);
+}
+.btn-primary {
+  background-color: var(--bg-secondary);
+  border-color: var(--bg-secondary);
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: var(--dark-text);
+  border-color: var(--dark-text);
+}

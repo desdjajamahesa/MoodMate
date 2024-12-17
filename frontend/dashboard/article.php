@@ -29,6 +29,30 @@ if (!isset($_SESSION['user'])) {
     .collapse-video {
       margin-top: 10px;
     }
+
+    /* CSS untuk memastikan artikel bisa discroll */
+    .card-body {
+      max-height: 400px; /* Batas tinggi artikel */
+      overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
+      padding-right: 10px; /* Memberikan ruang untuk scroll */
+    }
+
+    .article-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .article-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .article-introduction {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -70,122 +94,195 @@ if (!isset($_SESSION['user'])) {
   <script>
     const articles = {
       deepbreathing: [
-        { title: "The role of deep breathing on stress", content: "The objective of this study was to verify, in a sample of university students, whether a relaxing technique called deep breathing (stress Intervention Functional IFA) is capable to improve the mood and to reduce the levels of stress. Thirty-eight adult healthy subjects (aged between 18 and 28 years) volunteered the study. They were randomly divided in two groups, the Experimental Group (N = 19) and the Control Group (N = 19). The subjects of the Experimental Group were submitted, once per week, to 10 treatment’s sessions of Anti-stress Protocol, each lasting 90 min, whereas subjects of the Control Group sat ten times for 90 min, once per week, without practicing any treatment. The psychological state of mood and stress was evaluated using Measurement of Psychological Stress (MSP) and Profile of Mood State (POMS), while the bio logical profile of the stress was detected by measuring the heart rate and the salivary cortisol. The results obtained from the present research support the possibility that deep breathing technique is capable to induce an effective improvement in mood and stress both in terms of self reported evaluations (MPS and POMS) and of objective parameters, such as heart rate and salivary cortisol levels.", pdf: "../src/assets/deepbreathing/Therole.pdf" },
-        { title: "Benefits from one session of deep and slow breathing on vagal tone and anxiety in young and older adults", content: "Anxiety is recognized as a major health issue and is quite prevalent among older adults. An efcient way to manage anxiety is abdominal breathing. Breathing exercises seem to reduce anxiety and to increase parasympathetic activity assessed by HRV indexes. Yet, the efect of abdominal breathing on physiological stress (HRV) and anxiety in older adults remains poorly understood. Therefore, the aim of this study is to test the efects of deep and slow breathing (DSB, low inhale/exhale ratio) on physiological stress and anxiety in older adults (n = 22) in comparison with younger ones (n = 25). DSB increased signifcantly HFpower and reduced state anxiety in both younger and older adults DSB increased signifcantly HFpower and reduced state anxiety in both younger and older adults. Interestingly, the increased in HF power was signifcantly higher among older adults than younger ones. As expected, the ratio inhale/exhale being not equal, RMSSD did not increase following DSB. Thus, we provide evidence suggesting that DSB is more benefcial to older adults than younger ones to restore vagal outfow. Despite future work being required, those results provide relevant clinical application leads to manage state anxiety among older adults and to promote successfull aging. ", pdf: "../src/assets/deepbreathing/Benefits.pdf" },
-        { title: "Decrease  Anxiety  among  Students  Who  Will  Do  the  Objective Structured  Clinical  Examination  with  Deep  Breathing  Relaxation Technique ", content: "The anxiety is an emotional and subjective experience without any specific object so that people eel  a  feeling  of  worry  as  if  something  bad  will  happen  and  generally  accompanied  by  autonomic  symptoms lasting  some  time.  Like  students  who  will  carry  out  the  OSCE  exam  at  the  end  of  each  semester  as  a  form  of evaluation  of  the  extent  to  which  nursing  students  have  mastered  the  learning  outcomes  that  have  been  set during  the  OSCE  examination  during  the  OSCE  examination  all  students  are  required  to  display  cognitive,affective and psychomotor skills quickly, precisely complete. This is what generally can cause anxiety in students. We aimed to determine the decrease in student anxiety about the OSCE exam by relaxing deep breathing. This study was a quasi-experiment; pre-post test with control group design. The 40 undergraduate nursing program students  with  random sampling  were divided into two,  namely the control  group and the intervention group. The instrument uses a questionnaire.  The  independent  t-test  test  results  with  a  value  of  t  count  3.743  with  a  value  of  p  =  0.031  <  0.05, which that there was a decrease in student anxiety about the OSCE exam with deep breath relaxation. It is expected that all students who will carry out the exam can apply this  technique to carry out  the exam in calm conditions and satisfying results. ", pdf: "../src/assets/deepbreathing/Decrease.pdf" },
-        { title: "Deep Pressure Therapy: A Promising Anxiety Treatment for ", content: "One method for managing anxiety, a highly prevalent modern mental health condition, is the calming touch sensations of deep pressure therapy (DPT). Solutions for administering DPT include the Automatic Inflatable DPT (AID) Vest, which we designed in past work. Although benefits of DPT are clear in a subset of the related literature, these benefits are not ubiquitous. There is limited understanding of what factors lead to DPT success for a given user. In this work, we present the findings of a user study (N = 25) that evaluates the effects of the AID Vest on anxiety. We compared physiological and self-reported measures of anxiety across Active (inflating) and Control (inactive) states of the AID Vest. In addition, we considered the presence of placebo effects and assessed participant comfort with social touch as a potential moderator. The results support our ability to reliably induce anxiety, and show that the Active AID Vest tended to reduce biosignals related to anxiety. We also found a significant relationship between comfort with social touch and reductions in self-reported state anxiety for the Active condition. Those who seek to successfully deploy DPT can benefit from this work.", pdf: "../src/assets/deepbreathing/Deep.pdf" },
-        { title: "A better state-of-mind: deep breathing reduces state anxiety and enhances test performance through regulating test cognitions in children", content: "A pre-test/post-test, intervention-versus-control experimental design was used to examine the effects, mechanisms and moderators of deep breathing on state anxiety and test performance in 122 Primary 5 students. Taking deep breaths before a timed math test significantly reduced self-reported feelings of anxiety and improved test performance. There was a statistical trend towards greater effectiveness in reducing state anxiety for boys compared to girls, and in enhancing test performance for students with higher autonomic reactivity in test-like situations. The latter moderation was significant when comparing high-versus-low autonomic reactivity groups. Mediation analyses suggest that deep breathing reduces state anxiety in test-like situations, creating a better state-of-mind by enhancing the regulation of adaptive-maladaptive thoughts during the test, allowing for better performance. The quick and simple technique can be easily learnt and effectively applied by most children to immediately alleviate some of the adverse effects of test anxiety on psychological well being and academic performance.", pdf: "../src/assets/deepbreathing/Therole.pdf" },
-      
+        {
+          title: "Deep Breathing",
+    
+          content: "Kecemasan dapat didefinisikan sebagai keadaan emosional yang menyebar secara temporal, untuk mengantisipasi potensi ancaman, terkait dengan respons stres fisiologis. Setiap orang telah mengalami perasaan cemas, khawatir, tegang, dan takut ketika menghadapi sesuatu. <p> Perasaan cemas pada seseorang adalah hal yang wajar, terutama sesuatu yang ingin dia capai karena untuk mencapai kesuksesan dari apa yang diinginkan terkadang selalu disertai dengan gejolak psikologis. Kecemasan perlu dimiliki seumur hidup, tetapi jika kecemasan yang ada dalam diri individu menjadi berlebihan, maka itu akan berubah menjadi tidak normal. Dalam kasus kecemasan, mungkin lebih baik untuk memperkuat aktivitas parasimpatis di luar titik keseimbangan untuk memaksimalkan relaksasi. <p> Tujuan ini dapat dicapai dengan menggunakan deep and slow breathing,  sebuah metode yang ditandai dengan durasi pernafasan yang lebih lama daripada durasi inhalasi. Selama inhalasi, pusat kardiovaskular menghambat aliran keluar vagal, sehingga menghasilkan dominasi simpatik yang mempercepat detak jantung. Sebaliknya, selama pernafasan, aliran keluar vagal dipulihkan dan mengakibatkan perlambatan detak jantung.</p>",
+          
+        },
+        {
+          title: "Deep Breathing",
+        
+          content: "Hal tersebut juga dapat dilakukan dengan teknik tarik napas dalam atau deep breathing techniques. Teknik relaksasi pernapasan dalam adalah teknik yang digunakan oleh individu untuk memberikan kontrol diri ketika ada ketidaknyamanan atau stres fisik atau emosional. Tujuan dari teknik relaksasi pernapasan dalam adalah untuk meningkatkan ventilasi alveoli, mempertahankan pertukaran gas, mencegah atelektasis paru, meningkatkan efisiensi batuk, mengurangi stres baik stres fisik maupun stres emosional yang mengurangi intensitas nyeri dan mengurangi kecemasan. Teknik relaksasi mengarahkan individu dengan pengendalian diri ketika kecemasan terjadi. ",
+          
+        },
+        {
+          title: "Deep Breathing",
+          
+          content: "Teknik pernapasan 4-4-4 merupakan salah satu teknik pernapasan yang lebih mudah untuk dilakukan. Dengan teknik ini membantu menurunkan kecemasan dan mengurangi stress karena dapat mengalihkan pikiran. Berikut cara melakukan teknik pernapasan 4-4-4: <p>1.Tarik napas lalu buang saat menghitung 4. <p> 2. Tahan napas anda selama 4 detik. <p>3. Tarik napas anda hingga hitungan 4.<p> 4. Buang napas anda selama 4 detik</p>.<p>Lalukan cara tersebut secara berulanng hingga Anda merasa tenang, beberapa putaran teknik pernapasan ini akan membantu dalam menjaga detak jantung tetap rendah dan mengalihkan pikiran anda dari situasi yang memicu kecemasan. Anda juga dapat melakukan teknik pernapasan dengan 4-7-8, prosesnya sama hanya berberda pada bagian tahan napas selama 7 detik dan buang napas selama 8 detik. Anda bisa memilih teknik yang dirasa lebih nyaman saat mencoba melakukannya.  ",
+          
+        },
+        {
+          title: "Referensi",
+          
+          content: " Ariga, R. A. (2019). Decrease anxiety among students who will do the objective structured clinical examination with deep breathing relaxation technique. Open Access Macedonian Journal of Medical Sciences, 7(16), 2619–2622. https://doi.org/10.3889/oamjms.2019.409 <p>Bontula, A., Preston, R. C., Shannon, E., Wilson, C., & Fitter, N. T. (2023). Deep Pressure Therapy: A Promising Anxiety Treatment for Individuals With High Touch Comfort? IEEE Transactions on Haptics, 16(4), 549–554. https://doi.org/10.1109/TOH.2023.3272623 <p>Khng, K. H. (2017). A better state-of-mind: deep breathing reduces state anxiety and enhances test performance through regulating test cognitions in children. Cognition and Emotion, 31(7), 1502–1510. https://doi.org/10.1080/02699931.2016.1233095 <p>Magnon, V., Dutheil, F., & Vallet, G. T. (2021). Benefits from one session of deep and slow breathing on vagal tone and anxiety in young and older adults. Scientific Reports, 11(1). https://doi.org/10.1038/s41598-021-98736-9<p>Perciavalle, V., Blandini, M., Fecarotta, P., Buscemi, A., Di Corrado, D., Bertolo, L., Fichera, F., & Coco, M. (2017). The role of deep breathing on stress. Neurological Sciences, 38(3), 451–458. https://doi.org/10.1007/s10072-016-2790-8<p> Timothy J. Legg, PhD, PsyD, (2023, March 22). 8 Breathing Exercises to Try When You Feel Anxious. Healthline. https://www.healthline.com/health/breathing-exercises-for-anxiety",
+          
+        }
       ],
       hypnosis: [
-        { title: "Close your eyes and relax”: the role of hypnosis in reducing anxiety, and its implications for the prevention of cardiovascular diseases", content: "Anxiety is the most common form of mental health disorder, affecting millions of people worldwide. Psychosocial interventions such as mindfulness and cognitive behavioral therapy (CBT) have been suggested as an effective treatment in the management of general anxiety and anxiety disorders, with emerging evidence also suggesting the effectiveness of hypnosis. Moreover, anxiety has shown to be linked to the onset and development of several cardiovascular diseases (CVD), which are the leading cause of global death. In this paper, we review the current literature to examine the role that anxiety has on the onset and development of CVD and summarize the current knowledge on the role that hypnosis and hypnotherapy have in reducing anxiety, also explaining how this can impact the cardiovascular system and the prevention of CVD. Review of the evidence suggests that hypnosis and hypnotherapy are effective in treating anxiety and may positively affect the heart and the cardiovascular system, reducing sympathetic activation and increasing parasympathetic tone, potentially preventing the onset of CVD related to increased sympathetic activation. However, further studies are required to further understand how hypnosis and hypnotherapy affect the cardiovascular system through investigation of the neurophysiological components of the hypnotic state and of the mind-body relationship. Healthcare systems should embed mental health screening in patients at risk of developing CVD as part of the clinical pathway and consider the role that hypnosis and hypnotherapy may play in the management of CVD.", pdf: "../src/assets/hypnosis/Close.pdf" },
-        { title: "Can hypnosis and virtual reality reduce anxiety, pain and fatigue among patients who undergo cardiac surgery: a randomised controlled trial", content: "Background: Different non-pharmacological techniques, including hypnosis and virtual reality (VR)  are currently used as complementary tools in the treatment of anxiety, acute and chronic pain. A new technique called virtual reality hypnosis (VRH), which encompasses a combination of both tools, is regularly used although its benefits and underlying mechanisms remain unknown to date. With the goal to improve our understanding of VRH combination effects, it is necessary to conduct randomised and controlled research trials in order to understand their clinical interest and potential benefits. Methods: Patients (n = 100) undergoing cardiac surgery at the Liège University Hospital will be randomly assigned to one of four conditions (control, hypnosis, VR or VRH). Each patient will receive two sessions of one of the techniques: one the day before the surgery and one the day after. Physiological assessments will be made on the monitor and patients will rate their levels of anxiety, fatigue, pain, absorption and dissociation. Discussion: This study will help to expand knowledge on the application of virtual reality, hypnosis and VRH in the specific context of cardiac and intensive care procedures, and the influence of these non-pharmacological techniques on patient’s anxiety, fatigue, pain and phenomenological experience. Trial registration: ClinicalTrials.gov: NCT03820700. Date registered on 29 January 2019. Study recruitment date: October 6, 2018. Study anticipated completion date: December 28, 2020. Keywords: Cardiac surgery, Cardiology, Intensive care units, Non-pharmacological approaches, Pain, Anxiety, Fatigue, Hypnosis, Virtual reality, Virtual reality hypnosis", pdf: "../src/assets/hypnosis/Can_Hypno.pdf" },
-        { title: "Effectiveness of Hypnosis for the Prevention of Anxiety During Coronary Angiography (HYPCOR study): a prospective randomized study", content: "Background: Coronary angiography is the gold standard for the diagnosis of coronary artery disease. This intervention is nevertheless a source of anxiety for the patient both by its discomfort and by the consequences linked to the discovery of potential diseases. Objectives: The aim of this study was to determine the efectiveness of hypnosis in reducing anxiety in patients undergoing coronary angiography. Methods: One hundred sixty-nine patients with planned coronary angiography and no history of coronary angiography were randomized to a hypnosis or control group. Patients in the hypnosis group underwent a hypnosis session with self-hypnosis posthypnotic suggestions, while those in the control group had a conversational interview with the hypnotherapist. The primary endpoint was pre-exam anxiety level assessed by the Spielberger State-Trait Anxiety Inventory (STAI-Y A). Results: Performing a hypnosis session did not result in a signifcant decrease in anxiety before the intervention. Age, high trait anxiety, high state anxiety the day before, and belief that hypnosis works in general were associated with increased anxiety before the procedure. No adverse events were reported after hypnosis. There was no statistically signifcant diference between the 2 groups for the occurrence of complications of the intervention. Conclusion: In this study, performing a hypnosis session before coronary angiography did not reduce the state of anxiety measured just before the intervention. In all cases, the hypnotic experience appears to be positive for the patient, encouraging further research eforts. ", pdf: "../src/assets/hypnosis/Effectiveness.pdf" },
-        { title: "Group hypnosis for stress reduction and improved stress coping: a multicenter randomized controlled trial", content: "Background: The aim of the trial was to investigate the effect of a hypnotherapeutic group program in healthy persons with increased levels of perceived stress. Methods: In a randomized controlled multicenter trial participants with a self-assessed subjective stress level ≥ 40 mm on a visual analogue scale (0–100 mm; VAS) for the previous week and a stable state of health were randomized to either 5 weekly sessions of 120-min duration of a hypnotherapeutic group program for stress reduction and improved stress coping plus 5 hypnosis audiorecords for individual practice at home plus an educational booklet for stress coping (hypnosis group) versus an educational booklet only (control group). The primary outcome parameter was the VAS stress level for the previous week after 5 weeks. Secondary outcome parameters included the VAS stress level after 12 weeks, perceived stress (CPSS), depression (ADS-K), self efficacy (SWE) and quality of life (SF 36) after 5 weeks and 12 weeks. Analysis of covariance with a significance level of 5% using the full analysis set was used for analysis; the model included treatment (fixed effect), VAS baseline value (fixed covariate), and center (random effect). Results: A total of 95 participants were randomized; 47 (40 female, 45 ± 13.4 years of age) were allocated to the hypnosis group, and 48 (41 female, 46.9 ± 14.3 years) were allocated to the control group. Regarding VAS stress level after 5 weeks, the adjusted VAS mean in the hypnosis group was 41.8 mm [95% confidence interval (CI): 35.2; 48.4] compared to 62.9 mm [56.2; 69.7] in the control group, and the group difference was − 21.2 mm [− 30.1; − 12.2] (P < 0.001). After 12 weeks, the stress intensity on the VAS showed a between-group difference of − 14.7 mm [− 25.1; − 4.4] (P = 0.006), and the adjusted means were 41.1 mm [33.4; 48.8] in the hypnosis group and 55.9 mm [48.4; 63.5] in the control group. Improvements were also reported for CPSS, SF-36, SWE and ADS-K after 5 and 12 weeks. Conclusion: Compared to the control group, the hypnosis group showed reduced perceived stress after 5 and 12 weeks", pdf: "../src/assets/hypnosis/GroupHypnosis.pdf" },
-        { title: "Virtual reality and hypnosis for anxiety and pain management in intensive care units", content: "BACKGROUND Virtual reality and hypnosis are little studied in complex contexts, such as intensive care, where patients need significant physical and psychological assistance. OBJECTIVES To compare and combine hypnosis and virtual reality benefits on anxiety and pain on patients before and after cardiac surgery. DESIGN Prospective randomised controlled clinical trial. SETTING The study was conducted in the University Hospital of Liege (Belgium) from October 2018 to January 2020. PATIENTS One hundred patients (66 11.5 years; 24 women, 76 men) were included. Participants were adults undergoing cardiac surgery. Exclusion criteria: psychiatric diseases, claustrophobia, acrophobia, hearing loss, visual impairment, extreme fatigue, confusion surgery cancelled. INTERVENTIONS Patients were randomly assigned to four arms (control; hypnosis; virtual reality; virtual reality hypnosis) and had 20 min of one of the techniques the day before and the day after surgery. MAIN OUTCOMES MEASURES Anxiety, pain, fatigue, relaxation, physiological parameters, and opioid use were evaluated before and after each session. RESULTS The main results did not show any significant differences between the groups. In all groups, anxiety decreased and pain increased from baseline to the postoperative day. Relaxation increased in all groups in the preoperative (P < 0.0001) and postoperative period (P ¼ 0.03). There were no significant differences for fatigue, physiological measures, or opioid use. CONCLUSION As there were no significant differences between groups for the measured variables, we cannot affirm that one technique is better than another. Additional studies are required to compare and evaluate the cost-effectiveness of these techniques for critical care patients and caregivers.", pdf: "../src/assets/hypnosis/EVRandHypno.pdf" },
-        { title: "", content: ".", video: "https://www.youtube.com/embed/exampleVideo1" },
-
+        {
+          title: "Hypnosis",
+          
+          content: "Dalam konteks psikologis, hipnosis sering digunakan untuk membantu individu mengatasi berbagai masalah, termasuk kecemasan dan stres. Hypnosis dapat membantu individu memperoleh kontrol yang lebih besar terhadap respons tubuh dan pikirannya, membawa mereka pada keseimbangan emosional yang lebih baik. Stres yang berkepanjangan dapat merusak keseimbangan tubuh, memicu reaksi fisiologis seperti peningkatan detak jantung, ketegangan otot, dan peningkatan hormon stres (seperti kortisol), yang pada akhirnya dapat menyebabkan gangguan kesehatan fisik dan mental. Hypnosis adalah suatu keadaan di mana perhatian seseorang sangat terfokus, sementara kesadaran terhadap lingkungan sekitar menjadi berkurang, dan kondisi ini membuat seseorang lebih mudah merespons sugesti. Fokus dalam memperoleh kondisi pikiran yang rileks merupakan aspek utama hypnosis karena relaksasi terbukti efektif dalam mengurangi kecemasan. ",
+  
+        },
+        {
+          title: "Hypnosis",
+          
+          content: "Hipnosis memiliki tiga komponen utama: penyerapan, disosiasi, dan sugestibilitas. Penyerapan berarti kemampuan untuk sangat fokus dan tenggelam dalam pengalaman atau imajinasi, misalnya seperti saat dalam kondisi  menikmati sebuah cerita atau film. Disosiasi adalah proses pemisahan diri secara mental dari lingkungan sekitar, misalnya saat  merasa seperti  sedang berada di tempat lain dalam pikiran . Sugestibilitas berarti seberapa mudah merespons atau mengikuti petunjuk atau saran dari orang lain. Dalam beberapa kondisi Hypnosis dapat dilakukan oleh individu itu sendiri, yang dapat memanfaatkan imajinasi untuk mengurangi kecemasan atau stres, meningkatkan ketenangan, dan mengubah pola perilaku yang merugikan. Self-hypnosis adalah proses mengarahkan pikiran dan tubuh untuk masuk ke dalam keadaan yang sangat rileks dan fokus tanpa bantuan terapis. ",
+  
+        },
+        {
+          title: "Hypnosis",
+          
+          content: "Self-hypnosis bekerja dengan mengakses bagian bawah sadar untuk mengubah reaksi emosional dan fisik terhadap situasi yang menyebabkan kecemasan. Berikut adalah cara Melakukan Self-Hypnosis untuk Kecemasan :<p>1. Duduk dengan nyaman di tempat yang tenang, Anda dapat melakukan terapi ini dimanapun tetapi tetap bebas gangguan agar membantu fokus Anda. <p>2. Bernafaslah dalam-dalam selama beberapa saat, berirama dan lakukan dengan perlahan-lahan. Anda dapat menggunakan teknik pernapasan 4-4-4. <p>3. Banyangkan diri anda berada disuatu tempat yang memberi anda kenyamanan dan ketenangan, tidak harus tempat yang pernah dikunjungi. Anda dapat membayangkan tempat apapun yang memberikan Anda ketenangan dan kebahagiaan. <p>4. Libatkan seluruh indra Anda, seperti mencium wangi yang anda sukai untuk mengenang kenangan, rasakan air laut diwajah Anda, dan lainnya. <p>5. Berikan sugesti Positif pada diri. <p>6. Pilihlah afirmasi atau kata-kata positif yang menurut anda perlu saat ini, seperti “Saya kuat” atau “Saya hebat” atau “Saya cantik” dan kata-kata afirmasi lainnya.  ",
+  
+        },
+        {
+          title: "Hypnosis",
+          
+          content: "Self-hypnosis dapat menjadi alat yang efektif untuk mengelola kecemasan dan stres, dengan membantu menenangkan pikiran dan tubuh. Teknik ini dapat meningkatkan kemampuan Anda untuk mengendalikan respons terhadap kecemasan dan memberikan perasaan kedamaian serta kontrol pada diri. Latihan secara teratur dan konsistensi sangat penting untuk mencapai hasil yang maksimal. Tetapi perlu di ingat self-hypnosis tidak boleh digunakan sebagai pengganti pengobatan medis atau terapi psikologis yang diperlukan. Jika kecemasan sangat parah atau berlangsung lama, sangat penting untuk mencari dukungan dari seorang profesional.   ",
+  
+        },
+        {
+          title: "Hypnosis",
+          
+          content: "Rousseaux, F., Faymonville, M. E., Nyssen, A. S., Dardenne, N., Ledoux, D., Massion, P. B., & Vanhaudenhuyse, A. (2020). Can hypnosis and virtual reality reduce anxiety, pain and fatigue among patients who undergo cardiac surgery: a randomised controlled trial. Trials, 21(1), 330. https://doi.org/10.1186/s13063-020-4222-6 <p>Fisch S, Trivaković-Thiel S, Roll S, Keller T, Binting S, Cree M, Brinkhaus B, Teut M. Group hypnosis for stress reduction and improved stress coping: a multicenter randomized controlled trial. BMC Complement Med Ther. 2020 Nov 13;20(1):344. doi: 10.1186/s12906-020-03129-6. PMID: 33187503; PMCID: PMC7664040.<p> Leo, D. G., Keller, S. S., & Proietti, R. (2024). 'Close your eyes and relax': the role of hypnosis in reducing anxiety, and its implications for the prevention of cardiovascular diseases. Frontiers in psychology, 15, 1411835. https://doi.org/10.3389/fpsyg.2024.1411835 <p> Timothy J. Legg, PhD, PsyD, (2018, August 31). How to Perform Self-Hypnosis for Anxiety. Healthline. https://www.healthline.com/health/mental-health/self-hypnosis-for-anxiety",
+  
+        },
+        // Add more articles for hypnosis
       ],
       meditation: [
-        { title: "", content: "", video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY" },
-        { title: "Use of Meditation and Cognitive Behavioral Therapies for the Treatment of Stress, Depression and Anxiety in Students. A Systematic Review and Meta-Analysis", content: "The prevalence of mental health problems within students due to high academic demands and learning difficulties is a current challenge the field of education. The aim of this study is to review the scientific literature in order to analyze the effect produced by cognitive-behavioral programs and meditation strategies on stress, anxiety, and depression in students. A further aim is to identify the determinants of treatment success. The bibliographic search was carried out using Web of Science, specifically in the categories of “Education and Educational Research” and “Psychology”, obtaining a sample of 122 articles published between 2007 and 2018. Studies were included which had a pre experimental or quasi-experimental design and included pre-test and post-test phases. Following application of inclusion criteria, 34 articles were selected for inclusion in a meta-analysis of the random effects of each variable. This obtained an average effect size of −0.41 for stress, −0.37 for anxiety, and −0.30 for depression. Three moderating variables were analyzed, with significant correlations being found for the type of treatment relating to stress (Q = 11.01, df = 2, p = 0.004, R 2 = 0.294) and depression (Q = 6.14, df = 2, p = 0.048; R2 = 0.436). The stage of education of the individuals was also found to impact upon anxiety intervention success (Q = 13.093 df = 2, p = 0.0009, R 2 = 0.196). Interventions mainly addressed the importance of meditation strategies, mindfulness programs, and cognitive-behavioral therapy to reduce stress, anxiety, and depression in students. This supports the need to increase research at an early age, considering the treatment of mental health as a key factor influencing academic performance and quality of life.", pdf: "../src/assets/hypnosis/use_of_Meditation.pdf" },
-        { title: "Brief mindfulness-based training and mindfulness trait attenuate psychological stress in university students: a randomized controlled trial", content: "Background: Psychological distress in University settings has grown and became a public health concern. In this context, contemplative practices such as mindfulness have been proposed as a strategy to help students on stress management. Methods: Forty university students (20 female), aged between 18 to 30 years (mean=24.15; SD=3.56), with no previous experience with meditation or yoga were recruited at the Federal University of Rio Grande do Norte and randomized to a mindfulness training (MT) or active control (AC) groups. We analyzed measures of anxiety, afect, stress, as well as state and trait mindfulness in order to evaluate the efects of trait mindfulness and a brief mindful  ness intervention in forty healthy young students. Participants were classifed as Low (n=27, females=13) or High (n=13, females=7) Trait Mindfulness by kmeans clustering and compared between them using Wilcoxon sum rank test. Furthermore, the sample was randomly allocated to an AC (n=20, females=10) or a MT (n=20, females=10) group, and mixed analysis of variance was performed to analyze the efect of interventions. The mechanisms and role of trait mindfulness in the intervention was assessed by a moderated mediation analysis. Results: We found that High Trait individuals have lower anxiety trait, anxiety state and perceived stress levels. Only the MT group reduced their anxiety state and perceived stress after the intervention and increased their state mind  fulness. Both groups reduced negative afect and cortisol, and no change was found in positive afect. Moderated mediation analysis showed that the traininginduced change in state mindfulness mediated the increase in positive afect and the decrease in perceived stress and cortisol, regardless of trait mindfulness. For anxiety state the decrease only occurred in individuals with High Trait Mindfulness. Conclusions: Together, these results suggest that higher trait mindfulness is associated with low levels of psycho  logical distress and that a brief mindfulnessbased intervention seems to be useful to reduce distress measures in university students", pdf: "../src/assets/hypnosis/Brief_mindfulness.pdf" },
-        { title: "Efficacy of the Mindfulness Meditation Mobile App “Calm” toReduce Stress Among College Students: Randomized Controlled Trial", content: "Background: College students experience high levels of stress. Mindfulness meditation delivered via a mobile app may be an appealing, efficacious way to reduce stress in college students. Objective: We aimed to test the initial efficacy and sustained effects of an 8-week mindfulness meditation mobile app—Calm—compared to a wait-list control on stress, mindfulness, and self-compassion in college students with elevated stress. We also explored the intervention’s effect on health behaviors (ie, sleep disturbance, alcohol consumption [binge drinking], physical activity, and healthy eating [fruit and vegetable consumption]) and the feasibility and acceptability of the app. Methods: This study was a randomized, wait-list, control trial with assessments at baseline, postintervention (8 weeks), and at follow-up (12 weeks). Participants were eligible if they were current full-time undergraduate students and (1) at least 18 years of age, (2) scored ≥14 points on the Perceived Stress Scale, (3) owned a smartphone, (4) were willing to download the Calm app, (5) were willing to be randomized, and (7) were able to read and understand English. Participants were asked to meditate using Calm at least 10 minutes per day. A P value ≤.05 was considered statistically significant. Results: A total of 88 participants were included in the analysis. The mean age (SD) was 20.41 (2.31) years for the intervention group and 21.85 (6.3) years for the control group. There were significant differences in all outcomes (stress, mindfulness, and self-compassion) between the intervention and control groups after adjustment for covariates postintervention (all P.19). Similar results were found for mindfulness and self-compassion. Effect sizes ranged from moderate (0.59) to large (1.24) across all outcomes. A significant group×time interaction in models of sleep disturbance was found, but no significant effects were found for other health behaviors. The majority of students in the intervention group reported that Calm was helpful to reduce stress and stated they would use Calm in the future. The majority were satisfied using Calm and likely to recommend it to other college students. The intervention group participated in meditation for an average of 38 minutes/week during the intervention and 20 minutes/week during follow-up.", pdf: "../src/assets/hypnosis/Efficacy_of_the_Mindfulness.pdf" },
-        { title: "Impact of a Yoga and Meditation Intervention on Students’ Stress andAnxiety Levels", content: "Objective. To evaluate the impact of a six-week yoga and meditation intervention on college students’ stress perception, anxiety levels, and mindfulness skills. Methods. College students participated in a six-week pilot program that consisted of a 60-minute vinyasa flow yoga class once weekly, followed by guided meditation delivered by trained faculty members at the University of Rhode Island College of Pharmacy. Students completed pre- and postintervention questionnaires to evaluate changes in the following outcomes: stress levels, anxiety levels, and mindfulness skills. The questionnaire consisted of three self-reporting tools: the Beck Anxiety Inventory (BAI), the Perceived Stress Scale (PSS), and the Five Facet Mindfulness Questionnaire (FFMQ). Students’ scores on each were assessed to detect any changes from baseline using the numerical and categorical scales (low, medium, and high) for each instrument. Results. Seventeen participants, aged 19 to 23 years, completed the study. Thirteen participants were female and four were male. Nine of the students were enrolled in the Doctor of Pharmacy program and eight were enrolled in other academic programs. Students’ anxiety and stress scores decreased significantly while their total mindfulness increased significantly. Changes in categorical data from pre- to post-intervention on the BAI and PSS were significant, with no students scoring in the “high” category for stress or anxiety on the post intervention questionnaire. Conclusion. Students experienced a reduction in stress and anxiety levels after completing a six-week yoga and meditation program preceding final examinations. Results suggest that adopting a mindfulness practice for as little as once per week may reduce stress and anxiety in college students. Administrators should consider including instruction in nonpharmacologic stress and anxiety reduction methods, within curricula in order to support student self-care.", pdf: "../src/assets/hypnosis/Impact_of_a_Yoga_and_Meditation.pdf" },
-        { title: "Meditation and Yoga for Posttraumatic Stress Disorder: A Meta Analytic Review of Randomized Controlled Trials", content: "Posttraumatic stress disorder (PTSD) is a chronic and debilitating disorder that affects the lives of 7 8% of adults in the U.S. Although several interventions demonstrate clinical effectiveness for treating PTSD, many patients continue to have residual symptoms and ask for a variety of treatment options. Complementary health approaches, such as meditation and yoga, hold promise for treating symptoms of PTSD. This meta-analysis evaluates the effect size (ES) of yoga and meditation on PTSD outcomes in adult patients. We also examined whether the intervention type, PTSD outcome measure, study population, sample size, or control condition moderated the effects of complementary approaches on PTSD outcomes. The studies included were 19 randomized control trials with data on 1,173 participants. A random effects model yielded a statistically significant ES in the small to medium range (ES = −.39, p < .001, 95% CI [−.57, −.22]). There were no appreciable differences between intervention types, study population, outcome measures, or control condition. There was, however, a marginally significant higher ES for sample size ≤ 30 (ES = −.78, k = 5). These findings suggest that meditation and yoga are promising complementary approaches in the treatment of PTSD among adults and warrant further study.", pdf: "../src/assets/hypnosis/Meditation_and_Yoga_for_PTSD.pdf" },
-        { title: "Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being", content: "We investigated whether a mindfulness meditation program delivered via a smartphone application (app) could improve psychological well-being, reduce job strain, and reduce ambulatory blood pressure during the workday. Participants were 238 healthy employees from two large UK companies that were randomized to a mindfulness meditation practice app or a wait-list control condition. The app offered 45 pre-recorded 10–20 minute guided audio meditations. Participants were asked to complete one meditation per day. Psychosocial measures, and blood pressure throughout one working day, were measured at baseline and 8 weeks later; a follow-up survey was also emailed to participants 16 weeks after the intervention start. Usage data showed that during the 8-week intervention period, participants randomized to the intervention completed an average of 17 meditation sessions (range 0 to 45 sessions). The intervention group reported significant improvement in well-being, distress, job strain, and perceptions of workplace social support compared to the control group. In addition, the intervention group had a marginally significant decrease in self-measured workday systolic blood pressure from pre to post intervention. Sustained positive effects in the intervention group were found for well-being and job strain at the 16-week follow-up assessment. This trial suggests that short guided mindfulness meditations delivered via smartphone and practiced multiple times per week can improve outcomes related to work stress and well-being, with potentially lasting effects.", pdf: "../src/assets/hypnosis/Mindfulness_on_the_go.pdf" },
-        { title: "The Mindfulness App Trial for Weight, Weight-Related Behaviors, and Stress in University Students: Randomized Controlled Trial", content: "Background: University students are at risk of weight gain during their studies. Key factors related to weight gain in this population include unhealthy weight-related behaviors because of stress. Mindfulness holds promise for weight management. However, there has not been any previous trial that has explored the effectiveness of a student-tailored mindfulness app for stress, weight-related behaviors, and weight. There is limited evidence that current mindfulness apps use evidence-based mindfulness techniques. A novel app was developed that combined evidence-based, mindfulness-based stress reduction and mindful eating (ME) techniques that were tailored to university students, with student-relevant themes for targeting weight behaviors, weight, and stress. Objectives: The aim of this study was to test the effectiveness, acceptability, and feasibility of a student-tailored mindfulness app for weight, weight-related behaviors, and stress. Testing this app in a rigorous randomized controlled trial (RCT) for these outcomes is a novelty and contribution to this emerging field. Methods: A 2-arm RCT of an 11-week duration was undertaken at the University of Queensland. Students were either randomized to the mindfulness app (n=45) or to a behavioral self monitoring electronic diary (e-diary; n=45) for diet and exercise. Analysis of covariance was used to compare differences in weight, stress, mindfulness, ME, physical activity, and eating behaviors between both groups. Results: Neither the mindfulness app group nor the e-diary group lost weight and there were no differences between the groups at follow-up. The mindfulness app group had significantly lower stress levels (P=.02) (adherers only), lower emotional eating (P=.02), and uncontrolled eating (P=.02) as well as higher mindfulness (P≤.001) and ME levels overall (P≤.001). The e-diary group had higher metabolic equivalents of moderate activity levels (P≤.01). However, the effect sizes were small. Regular adherence to mindfulness exercises in the app was low in the group. The majority of students (94%) liked the app and found it to be acceptable. Compared with other exercises, the most helpful reported meditation was the short breathing exercise observing the breath (39.4% [13/33] preferred it). This was the first RCT that tested a mindfulness app for weight and weight-related behaviors in students. The modest level of user adherence likely contributes to the lack of effect on weight loss. However, there was a small, albeit promising, effect on weight related eating behavior and stress. Conclusions: A mindfulness app demonstrated effectiveness for stress, eating behaviors, mindfulness, and ME, but the effect sizes were small. Future studies should be conducted over longer periods of time and with greater participant compliance", pdf: "../src/assets/hypnosis/The_Mindfulness_App_Trial.pdf" },
-        { title: "The Effects of Mindfulness Meditation on Stress and Burnout in Nurses", content: "Background: Occupational burnout related to stress in the workplace is experienced by nurses who are regularly confronted with trauma, suffering, and high workloads. Burnout can negatively impact patient care and have detrimental effects on nurses’ physical and mental health. Mindfulness-based stress reduction programs have been researched as a potential holistic intervention for reducing stress and burnout in nurses through cultivating present awareness, emotional regulation, and positive thinking. Purpose: This critical review of the literature explores current knowledge on the effectiveness of mindfulness meditation on stress and burnout in nurses, examines gaps in the current literature, and provides recommendations for future research on this topic. Methods: Search terms included mindfulness, meditation, mindfulnessbased stress reduction , occupational stress, stress, burnout, and nurs*. Peer-reviewed research directly related to the impact of mindfulness based stress reduction on nurses experiencing stress and/or burnout was reviewed. Findings: Findings reveal evidence that mindfulness meditation is effective in decreasing stress and burnout in nurses. Mindfulness-based interventions have been shown to significantly decrease stress, improve all aspects of burnout, and increase self-compassion and compassion satisfaction in practicing nurses. Conclusions: Mindfulness meditation has the potential to decrease stress and burnout in nurses by decreasing self-judgment and overidentification with experience, and by increasing resiliency, compassion, and emotional regulation.", pdf: "../src/assets/hypnosis/The_Effects_of_Mindfulness_Meditation" },
-        { title: "Time perception and the experience of agency in meditation and hypnosis", content: "Mindfulness meditation and hypnosis are related in opposing ways to awareness of intentions. The cold control theory of hypnosis proposes that hypnotic responding involves the experience of involuntariness while performing an actually intentional action. Hypnosis therefore relies upon inaccurate metacognition about intentional actions and experiences. Mindfulness meditation centrally involves awareness of intentions and is associated with improved metacognitive access to intentions. Therefore, mindfulness meditators and highly hypnotizable people may lie at opposite ends of a spectrum with regard to metacognitive access to intention-related information. Here we review the theoretical background and evidence for differences in the metacognition of intentions in these groups, as revealed by chronometric measures of the awareness of voluntary action: the timing of an intention to move (Libet’s “W” judgments) and the compressed perception of time between an intentional action and its outcome (“intentional binding”). We review these measures and critically evaluate their proposed connection to the experience of volition and sense of agency.", pdf: "../src/assets/hypnosis/Time_perception.pdf" },
-        { title: "", content: ".", video: "https://www.youtube.com/watch?v=cyMxWXlX9sU&ab_channel=Lavendaire" },
-        { title: "", content: ".", video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i" },
-        { title: "", content: ".", video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36" },
-        { title: "", content: ".", video: "https://youtu.be/1ZYbU82GVz4?si=t0cNUmyQlZPxpP1N" },
-        { title: "", content: ".", video: "https://youtu.be/U9YKY7fdwyg?si=XEd61-5VqLzItdeU" },
-        { title: "", content: ".", video: "https://youtu.be/oqJh0-71q8U?si=ANqGV_3I2udxft-v" },
-        { title: "", content: ".", video: "https://youtu.be/ozaFsRbcC4o?si=kT2-vC-QUZqfSodI" },
-        { title: "", content: ".", video: "https://youtu.be/4wKh265mCiA?si=y1JIGH0WsFyvJj_G" },
-
+        {
+          title: "Meditation ",
+       
+          content: "Mindfulness adalah konsep penting dalam praktik meditasi Buddha, yang menjadi berpengaruh di Barat melalui adopsi dalam teknik psikoterapi, mungkin yang paling terkenal adalah Mindfulness‐Based Stress Reduction Program karya Jon Kabat‐Zinn. Meditasi mindfulness dapat dikatakan menginduksi keadaan kesadaran yang berubah, dalam arti yang lemah, melalui perubahan fokus perhatian, misalnya terhadap keadaan tubuh. Mindfulness digambarkan sebagai pergeseran perspektif dan pelepasan terhadap sensasi dan pikiran, membiarkan seseorang menerima daripada menghindari hal yang tidak menyenangkan. Mindfulness-based stress reduction (MBSR). yang dikembangkan oleh Kabat-Zinn pada tahun 1970-an adalah modalitas meditasi kesadaran yang paling banyak digunakan.",
+          
+          video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY"
+        },
+        {
+          title: "Meditation ",
+       
+          content: "Istilah meditasi mencakup semua praktik pelatihan yang dirancang untuk menyadari proses mental dan tubuh, yang dapat dikelompokkan menjadi dua jenis yang lebih luas: praktik kesadaran konsentratif dan terbuka. Jenis pertama mengharuskan perhatian diarahkan dan dipertahankan secara sukarela terhadap objek internal atau eksternal (misalnya, kesadaran napas, sensasi tubuh, mantra musik). Sebaliknya,  jenis yang kedua menyiratkan membiarkan perhatian, tidak ada objek perhatian yang dipilih sebelumnya. Ketika meditasi mencakup wawasan, perhatian meluas untuk mempertimbangkan sifat-sifat keadaan mental, seperti kefanaan atau kepemilikan yang dirasakan, yang relevan dengan analisis Buddhis tentang perkembangan. Meditator pemula sering kali diperkenalkan dengan teknik perhatian terfokus sebelum pemantauan terbuka, karena keterampilan metakognitif yang dikembangkan oleh meditasi perhatian terfokus dapat membantu pemantauan terbuka. ",
+         
+          video: "https://youtu.be/cyMxWXlX9sU?si=EMr5G7t3NowgM1mR"
+        },
+        {
+          title: "Meditation ",
+       
+          content: "Untuk pemula, Anda bisa menetapkan waktu yang akan Anda gunakan untuk melakukan meditasi. Apabila tidak, Anda akan memiliki keinginan untuk cepat berhenti selama melakukan meditasi, sehingga pemula sebaiknya memulai dengan waktu yang singkat (5 sampai 10 menit saja). Lalu Anda bisa lakukan secara bertahap dengan dua kali dari waktu sebelumnya, hingga mencapai 45 menit atau bahkan satu jam. Lakukan meditasi ini pada pagi, sore, atau bahkan keduanya. Saat melakukan meditasi pilih tempat yang sekiranya jauh dari gangguan dan kebisingan. Berikut salah satu cara melakukan meditasi: <p>1.  Lakukan dalam posisi duduk, Anda bisa duduk dimanapun (dikursi, bantal meditasi, ditaman, atau tempat lainnya yang memberikan anda ketenangan). <p>2. Perhatikan posisi kaki Anda (Bila diatas bantal meditasi atau matras, duduklah seperti posisi yoga. Apabila Anda duduk diatas kursi, sebaiknya telapak kaki menyantuh lantai).<p>3. Tubuh posisi tegak tetapi tidak kaku.<p>4. Posisikan tangan diatas kaki atau paha Anda.<p>5. Turunkan dagu sedikit dan biarkan pandangan Anda kebawah atau dengan menutup mata.<p>6. Tenangkan diri sejenak, fokuskan perhatian pada pernapasan atau sensasi tubuh.<p>7. Rasakan napas saat menarik dan membuang napas. <p>8. Perhatian Anda akan pergi “berpetualang”, saat Anda tersadar pikiran Anda kembalikan perhatian pada pernapasan.<p>9. Berlatih untuk berhenti sejenak sebelum melakukan gerakan fisik apapun. <p>10. Teruslah untuk fokus pada pikiran dan coba untuk membayangkan “berpetualang” ke situasi yang membuat Anda tenang.<p>11. Setelah dirasa cukup, mulai angkat lengan dengan perlahan dan bukalah mata Anda. Diam sejenak untuk memperhatikan suara-suara di sekitar Anda, sensasi pada tubuh Anda, pikiran dan emosi Anda. ",
+      
+          video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
+        },
+        {
+          title: "Meditation ",
+       
+          content: "Bostock, S., Crosswell, A. D., Prather, A. A., & Steptoe, A. (2019). Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being. Journal of Occupational Health Psychology, 24(1), 127–138. https://doi.org/10.1037/ocp0000118<p>González-Valero, G., Zurita-Ortega, F., Ubago-Jiménez, J. L., & Puertas-Molero, P. (2019). Use of meditation and cognitive behavioral therapies for the treatment of stress, depression and anxiety in students. A systematic review and meta-analysis. In International Journal of Environmental Research and Public Health (Vol. 16, Issue 22). MDPI AG. https://doi.org/10.3390/ijerph16224394<p>Green, A. A., & Kinchen, E. V. (2021). The Effects of Mindfulness Meditation on Stress and Burnout in Nurses. In Journal of Holistic Nursing (Vol. 39, Issue 4, pp. 356–368). SAGE Publications Inc. https://doi.org/10.1177/08980101211015818<p>Huberty, J., Green, J., Glissmann, C., Larkey, L., Puzia, M., & Lee, C. (2019). Efficacy of the mindfulness meditation mobile app “calm” to reduce stress among college students: Randomized controlled trial. JMIR MHealth and UHealth, 7(6). https://doi.org/10.2196/14273<p>Lyzwinski, L. N., Caffery, L., Bambling, M., & Edirippulige, S. (2019). The mindfulness app trial for weight, weight-related behaviors, and stress in university students: Randomized controlled trial. JMIR MHealth and UHealth, 7(4). https://doi.org/10.2196/12210<p>Mindful. (2023, 06 January). Mindfulness Meditation: How to Do It. https://www.mindful.org/mindfulness-how-to-do-it/ ",
+          
+          video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/1ZYbU82GVz4?si=t0cNUmyQlZPxpP1N"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/U9YKY7fdwyg?si=XEd61-5VqLzItdeU"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/oqJh0-71q8U?si=ANqGV_3I2udxft-v"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/ozaFsRbcC4o?si=kT2-vC-QUZqfSodI"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/4wKh265mCiA?si=y1JIGH0WsFyvJj_G"
+        },
+        // Add more articles for meditation
       ]
     };
 
-    function renderArticles(section, containerId, paginationId, itemsPerPage = 3) {
-  const container = document.getElementById(containerId);
-  const pagination = document.getElementById(paginationId);
-  const totalItems = articles[section]?.length || 0;
-  if (totalItems === 0) {
-    container.innerHTML = '<p>No articles available for this category.</p>';
-    pagination.innerHTML = '';
-    return;
-  }
-
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-  let currentPage = 1;
-
-  function displayPage(page) {
-    container.innerHTML = "";
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-
-    articles[section].slice(start, end).forEach((article, index) => {
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      // Function to extract YouTube video ID
-      function extractYouTubeId(url) {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
+    function renderArticles(section, containerId, paginationId, itemsPerPage = 1) {
+      const container = document.getElementById(containerId);
+      const pagination = document.getElementById(paginationId);
+      const totalItems = articles[section]?.length || 0;
+      if (totalItems === 0) {
+        container.innerHTML = '<p>No articles available for this category.</p>';
+        pagination.innerHTML = '';
+        return;
       }
 
-      const contentHTML = `
-        <div class="card-header">
-          <h5 class="card-title">${article.title || 'Untitled Article'}</h5>
-        </div>
-        <div class="card-body">
-          ${article.content ? `<p class="justify-text">${article.content}</p>` : ''}
-          ${article.pdf ? `<a class="btn btn-secondary" href="${article.pdf}" download="${article.title}.pdf">Download PDF</a>` : ''}
-          ${article.video ? `
-            <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseVideo${start + index}" aria-expanded="false" aria-controls="collapseVideo${start + index}">
-              Watch Video
-            </button>
-            <div class="collapse collapse-video" id="collapseVideo${start + index}">
-              <iframe 
-                width="100%" 
-                height="400" 
-                src="https://www.youtube.com/embed/${extractYouTubeId(article.video)}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-            </div>` : ''}
-        </div>
-      `;
-      card.innerHTML = contentHTML;
-      container.appendChild(card);
-    });
-  }
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      let currentPage = 1;
 
-  // Rest of the function remains the same as before
-  function updatePagination() {
-    pagination.innerHTML = "";
-    for (let i = 1; i <= totalPages; i++) {
-      const pageItem = document.createElement('li');
-      pageItem.className = 'page-item';
-      pageItem.innerHTML = `<button class="page-link">${i}</button>`;
-      pageItem.addEventListener('click', () => {
-        currentPage = i;
-        displayPage(currentPage);
-        updatePagination();
-      });
-      if (i === currentPage) pageItem.classList.add('active');
-      pagination.appendChild(pageItem);
+      function displayPage(page) {
+        container.innerHTML = "";
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        articles[section].slice(start, end).forEach((article, index) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+
+          // Function to extract YouTube video ID
+          function extractYouTubeId(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+          }
+
+          const contentHTML = `
+            <div class="card-body">
+  <h1 class="article-title">${article.title || 'Untitled Article'}</h1>
+  
+  <p class="article-content">${article.content || 'No content available.'}</p>
+  ${article.pdf ? `<a class="btn btn-secondary" href="${article.pdf}" download="${article.title}.pdf">Download PDF</a>` : ''}
+  ${article.video ? `
+    <button class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseVideo${start + index}" aria-expanded="false" aria-controls="collapseVideo${start + index}">
+      Watch Video
+    </button>
+    <div class="collapse collapse-video" id="collapseVideo${start + index}">
+      <iframe 
+        src="https://www.youtube.com/embed/${extractYouTubeId(article.video)}" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>` : ''}
+</div>
+          `;
+          card.innerHTML = contentHTML;
+          container.appendChild(card);
+        });
+      }
+
+      function updatePagination() {
+        pagination.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          const pageItem = document.createElement('li');
+          pageItem.className = 'page-item';
+          pageItem.innerHTML = `<button class="page-link">${i}</button>`;
+          pageItem.addEventListener('click', () => {
+            currentPage = i;
+            displayPage(currentPage);
+            updatePagination();
+          });
+          if (i === currentPage) pageItem.classList.add('active');
+          pagination.appendChild(pageItem);
+        }
+      }
+
+      displayPage(currentPage);
+      updatePagination();
     }
-  }
-
-  displayPage(currentPage);
-  updatePagination();
-}
 
     document.getElementById('deepBreathingBtn').addEventListener('click', () => {
       renderArticles('deepbreathing', 'deepBreathingArticles', 'deepBreathingPagination');
@@ -208,7 +305,7 @@ if (!isset($_SESSION['user'])) {
       document.getElementById('meditationContent').style.display = 'block';
     });
 
-    document.getElementById('stressBtn').click();
+    document.getElementById('deepBreathingBtn').click(); // Automatically show Deep Breathing content on load
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
