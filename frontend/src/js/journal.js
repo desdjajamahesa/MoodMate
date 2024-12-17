@@ -8,10 +8,10 @@ document.getElementById('journalForm').addEventListener('submit', function (e) {
     }
 
     // Kirim data ke server menggunakan fetch
-    fetch('save_journal.php', {
+    fetch('backend/save_journal.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ content: content }) // Ubah body menjadi URLSearchParams
+        body: new URLSearchParams({ content: content })
     })
     .then(response => response.json()) // Menangani response JSON
     .then(data => {

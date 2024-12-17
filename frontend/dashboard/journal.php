@@ -96,10 +96,10 @@ if (!$conn) {
             <div class="col-9 d-flex">
                 <div class="journal-wrapper col-8">
                     <h4 class="mb-4">JOURNAL - Tuang perasaan dan moment mu disini, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
-                    <form action="save_journal.php" method="POST">
-                        <textarea name="journal_content" id="journalEntry" placeholder="Tulis catatanmu di sini..."></textarea>
-                        <button type="submit" class="btn btn-primary mt-3">Simpan Catatan</button>
-                    </form>
+                    <form id="journalForm">
+  <textarea id="journalEntry" class="form-control" rows="4" placeholder="Tulis catatan Anda..."></textarea>
+  <button type="submit" class="btn btn-primary mt-3">Simpan Catatan</button>
+</form>
                 </div>
 
                 <!-- Journal History -->
