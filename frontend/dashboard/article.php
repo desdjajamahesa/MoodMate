@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
-  header("Location: ../login.php");
-  exit();
-}
+// if (!isset($_SESSION['user'])) {
+//   header("Location: ../login.php");
+//   exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ if (!isset($_SESSION['user'])) {
       margin-top: 20px;
     }
     .card {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .collapse-video {
       margin-top: 10px;
@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])) {
 
     /* CSS untuk memastikan artikel bisa discroll */
     .card-body {
-      max-height: 400px; /* Batas tinggi artikel */
+      max-height: 300px; /* Batas tinggi artikel */
       overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
       padding-right: 10px; /* Memberikan ruang untuk scroll */
     }
@@ -63,14 +63,14 @@ if (!isset($_SESSION['user'])) {
       <div class="col-9">
         <div class="article-wrapper p-3">
           <div class="article">
-            <div class="header-content-article text-end mt-5">
+            <div class="header-content-article text-end mt-2">
               <h4>ARTICLE</h4>
             </div>
             <div class="main-content-article mt-4">
-              <div class="d-flex justify-content-center mb-4">
-                <button class="btn btn-primary mx-2" id="deepBreathingBtn">Deep Breathing</button>
-                <button class="btn btn-warning mx-2" id="hypnosisBtn">Hypnosis</button>
-                <button class="btn btn-success mx-2" id="meditationBtn">Meditation</button>
+              <div class="d-flex justify-content-center mb-2">
+                <button class="btn  mx-2" id="deepBreathingBtn">Deep Breathing</button>
+                <button class="btn  mx-2" id="hypnosisBtn">Hypnosis</button>
+                <button class="btn  mx-2" id="meditationBtn">Meditation</button>
               </div>
               <div id="deepBreathingContent" class="session-content" style="display: none;">
                 <div id="deepBreathingArticles"></div>
