@@ -21,7 +21,7 @@ if (!isset($_SESSION['user'])) {
   <!-- ! LINK SIDEBAR CSS -->
   <link rel="stylesheet" href="../src/style/sidebar.css" />
   <!-- ! LINK MOOD TRACKER CSS -->
-  <link rel="stylesheet" href="../src/style/mentalhealth.css" />
+  <link rel="stylesheet" href="../src/style/mentalheath.css" />
 </head>
 
 <body>
@@ -31,22 +31,44 @@ if (!isset($_SESSION['user'])) {
       <?php include 'sidebar.php' ?>
       <!-- ! SIDEBAR END CODE -->
 
-      <!-- ! MENTAL HEALTH CONTENT OPEN CODE -->
       <div class="col-9 mental-health-wrapper">
         <div class="mental-health">
+          <!-- ! HEADER MENTAL HEALTH OPEN CODE -->
           <div class="header-content-mental-health text-end mt-5">
             <h4>MENTAL HEALTH</h4>
           </div>
-          <div class="main-content-mental-health mt-4">
+          <!-- ! HEADER END CODE -->
+          <!-- ! PRE DEFINE MENTAL HEALTH CODE -->
+          <div class="pre-define-mental-health mb-4">
+            <div class="row text-center">
+              <!-- Dynamically Generated Cards -->
+              <div id="pre-define-container" class="d-flex justify-content-center gap-3"></div>
+            </div>
           </div>
+          <!-- ! PRE DEFINE END CODE -->
+          <!-- ! MENTAL HEALTH CONTENT OPEN CODE -->
+          <div class="main-content-mental-health p-4 border rounded bg-light text-center">
+            <p class="text-muted" id="default-text">cek tingkat mental health kamu</p>
+            <!-- Questionnaire Info -->
+            <div id="questionnaire-info" style="display: none;">
+              <h5 id="selected-title" class="fw-bold"></h5>
+              <p id="questionnaire-description"></p>
+              <button id="start-btn" class="btn btn-success px-4" onclick="startQuestionnaire()">Mulai</button>
+            </div>
+            <!-- Questionnaire Section -->
+            <div id="question-container" class="p-4 border rounded bg-light" style="display: none;"></div>
+            <!-- Result Section -->
+            <div id="result-container" style="display: none;"></div>
+          </div>
+          <!-- ! MENTAL HEALTH CONTENT END CODE -->
         </div>
       </div>
-      <!-- ! MENTAL HEALTH CONTENT END CODE -->
     </div>
   </div>
 
   <!-- ! LINK BOOTSTRAP JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../src/js/mentalhealth.js"></script>
 </body>
 
 </html>

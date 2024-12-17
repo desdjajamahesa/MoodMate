@@ -36,6 +36,7 @@ if (!isset($_SESSION['user'])) {
         <div class="mood-tracker">
           <div class="header-content-mood-tracker text-start mt-5">
             <h4>MOOD TRACKER</h4>
+            <hr class="divider">
           </div>
           <div class="main-content-mood-tracker d-flex flex-column align-items-center justify-content-center mt-4">
             <!-- ! GAMBAR MOOD OPEN CODE -->
