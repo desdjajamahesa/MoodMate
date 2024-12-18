@@ -31,13 +31,48 @@ if (!$conn) {
     <!-- TinyMCE -->
     <script src="https://cdn.tiny.cloud/1/xbcylp9wkh20u9wzclqiyy82a0vvkoyiaph6nfmzedqxqhyd/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        tinymce.init({
-            selector: '#journalEntry',
-            plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
-            toolbar: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | help',
-            height: 300
-        });
-    </script>
+    tinymce.init({
+        selector: '#journalEntry',
+        plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+        toolbar: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | help',
+        height: 300,
+        images_upload_url: '../../backend/upload_image.php',
+        images_upload_handler: function (blobInfo, success, failure) {
+            let xhr, formData;
+
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '../../backend/upload_image.php');
+
+            xhr.onload = function () {
+                if (xhr.status !== 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    return;
+                }
+
+                let json;
+                try {
+                    json = JSON.parse(xhr.responseText);
+                } catch (e) {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+
+                if (!json || typeof json.location !== 'string') {
+                    failure('Invalid response from server');
+                    return;
+                }
+
+                success(json.location);
+            };
+
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+            xhr.send(formData);
+        }
+    });
+</script>
     <style>
         /* Mencegah scroll horizontal dan vertikal */
         html, body {
@@ -91,14 +126,12 @@ if (!$conn) {
             <div class="col-9 d-flex">
                 <div class="journal-wrapper col-8">
                     <h4 class="mb-4">JOURNAL - Tuang perasaan dan moment mu disini, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
-                    <form id="journalForm">
-  <textarea id="journalEntry" class="form-control" rows="4" placeholder="Tulis catatan Anda..."></textarea>
-  <button type="submit" class="btn btn-primary mt-3">Simpan Catatan</button>
-</form>
+                    <form method="POST" action="../../backend/save_journal.php">
+        <textarea id="journalEntry" name="journal_content"></textarea>
+        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+    </form>
                 </div>
 
-                <!-- Journal History -->
-                <!-- Journal History -->
 <!-- Journal History -->
 <div class=" col-4 mt-3">
     <button class="btn btn-primary w-100 text-start mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#journalHistoryCollapse" aria-expanded="false" aria-controls="journalHistoryCollapse">
