@@ -1,10 +1,8 @@
-// Event listener untuk input range
 document.getElementById("moodRange").addEventListener("input", function () {
   const moodValue = parseInt(this.value);
   const moodImage = document.getElementById("moodImage");
   const moodText = document.getElementById("moodText");
 
-  // Ubah gambar dan teks sesuai nilai slider
   switch (moodValue) {
     case 1:
       moodImage.src = "../src/assets/images/emotions/sangat-tidak-senang.png";
@@ -37,8 +35,6 @@ document.getElementById("moodRange").addEventListener("input", function () {
   }
 });
 
-// Event listener untuk button "Next"
 document.getElementById("nextBtn").addEventListener("click", function () {
   alert("Fitur ini akan menampilkan pertanyaan berikutnya!");
-  // Anda bisa menambahkan redirect atau logika lain di sini
 });
