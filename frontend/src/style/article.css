@@ -124,17 +124,30 @@ button:hover {
 .pagination {
   justify-content: center;
   margin-top: 20px;
-  padding-left: 0;
 }
 
-.page-item .page-link {
-  font-size: 1rem;
-  padding: 8px 16px;
+.pagination .page-item {
+  margin: 0 5px;
 }
 
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
+.pagination .page-link {
+  border-radius: 50px;
+  border: 1px solid var(--nav-color);
+  color: var(--nav-color);
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+  background-color: var(--nav-color);
+  color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--nav-color);
+  color: #fff;
+  border: 1px solid var(--nav-color);
 }
 
 /* Responsif untuk gambar dan video */

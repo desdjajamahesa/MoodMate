@@ -286,20 +286,56 @@ session_start();
       }
 
       function updatePagination() {
-        pagination.innerHTML = "";
-        for (let i = 1; i <= totalPages; i++) {
-          const pageItem = document.createElement('li');
-          pageItem.className = 'page-item';
-          pageItem.innerHTML = `<button class="page-link">${i}</button>`;
-          pageItem.addEventListener('click', () => {
-            currentPage = i;
-            displayPage(currentPage);
-            updatePagination();
-          });
-          if (i === currentPage) pageItem.classList.add('active');
-          pagination.appendChild(pageItem);
-        }
-      }
+  pagination.innerHTML = "";
+
+  // Previous button
+  const prevItem = document.createElement('li');
+  prevItem.className = 'page-item';
+  if (currentPage === 1) prevItem.classList.add('disabled'); // Disable if on the first page
+  prevItem.innerHTML = `
+    <a class="page-link" href="#" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>`;
+  prevItem.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayPage(currentPage);
+      updatePagination();
+    }
+  });
+  pagination.appendChild(prevItem);
+
+  // Page numbers
+  for (let i = 1; i <= totalPages; i++) {
+    const pageItem = document.createElement('li');
+    pageItem.className = 'page-item';
+    if (i === currentPage) pageItem.classList.add('active');
+    pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    pageItem.addEventListener('click', () => {
+      currentPage = i;
+      displayPage(currentPage);
+      updatePagination();
+    });
+    pagination.appendChild(pageItem);
+  }
+
+  // Next button
+  const nextItem = document.createElement('li');
+  nextItem.className = 'page-item';
+  if (currentPage === totalPages) nextItem.classList.add('disabled'); // Disable if on the last page
+  nextItem.innerHTML = `
+    <a class="page-link" href="#" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>`;
+  nextItem.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayPage(currentPage);
+      updatePagination();
+    }
+  });
+  pagination.appendChild(nextItem);
+}
 
       displayPage(currentPage);
       updatePagination();
