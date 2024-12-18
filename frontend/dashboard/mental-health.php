@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
-  header("Location: ../login.php");
-  exit();
-}
+// if (!isset($_SESSION['user'])) {
+//   header("Location: ../login.php");
+//   exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -22,20 +22,55 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="../src/style/sidebar.css" />
   <!-- ! LINK MOOD TRACKER CSS -->
   <link rel="stylesheet" href="../src/style/mentalheath.css" />
+    
+  <style>
+    :root {
+      --bg-primary: #97bcd6;
+      --bg-secondary: #ffb4c0;
+      --nav-color: #c3d8f7;
+      --light-text: #f7f7f7;
+      --dark-text: #a8c2e3;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      font-family: 'Arial', sans-serif;
+    }
+
+    
+    .mental-health-wrapper {
+      background-color: var(--nav-color);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      
+    }
+
+    .header-content-mental-health {
+      background-color: var(--bg-secondary);
+      color: var(--light-text);
+      padding: 1rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+  </style>
 </head>
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row">
       <!-- ! SIDEBAR OPEN CODE -->
       <?php include 'sidebar.php' ?>
       <!-- ! SIDEBAR END CODE -->
 
-      <div class="col-9 mental-health-wrapper">
-        <div class="mental-health">
+      <div class="col-9 py-4 ">
+        <div class="mental-health mental-health-wrapper">
           <!-- ! HEADER MENTAL HEALTH OPEN CODE -->
-          <div class="header-content-mental-health text-end mt-5">
-            <h4>MENTAL HEALTH</h4>
+          <div class="header-content-mental-health text-center ">
+            <h4 class="fw-bold">MENTAL HEALTH</h4>
           </div>
           <!-- ! HEADER END CODE -->
           <!-- ! PRE DEFINE MENTAL HEALTH CODE -->
@@ -47,7 +82,7 @@ if (!isset($_SESSION['user'])) {
           </div>
           <!-- ! PRE DEFINE END CODE -->
           <!-- ! MENTAL HEALTH CONTENT OPEN CODE -->
-          <div class="main-content-mental-health p-4 border rounded bg-light text-center">
+          <div class="main-content-mental-health p-4 border-0 rounded bg-light text-center shadow">
             <p class="text-muted" id="default-text">cek tingkat mental health kamu</p>
             <!-- Questionnaire Info -->
             <div id="questionnaire-info" style="display: none;">

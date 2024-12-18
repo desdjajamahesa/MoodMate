@@ -19,6 +19,18 @@ session_start();
   <link rel="stylesheet" href="../src/style/sidebar.css" />
   <link rel="stylesheet" href="../src/style/article.css" />
   <style>
+      body {
+      background-color: var(--bg-primary);
+      font-family: 'Arial', sans-serif;
+    }
+    .header-content-article {
+      background-color: var(--bg-secondary);
+      color: var(--light-text);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
     .pagination {
       justify-content: center;
       margin-top: 20px;
@@ -32,7 +44,7 @@ session_start();
 
     /* CSS untuk memastikan artikel bisa discroll */
     .card-body {
-      max-height: 300px; /* Batas tinggi artikel */
+      max-height: 380px; /* Batas tinggi artikel */
       overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
       padding-right: 10px; /* Memberikan ruang untuk scroll */
     }
@@ -53,6 +65,15 @@ session_start();
       margin-bottom: 10px;
       font-style: italic;
     }
+
+    .article-wrapper {
+      background-color: var(--nav-color);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      
+    }
   </style>
 </head>
 
@@ -62,8 +83,8 @@ session_start();
       <?php include 'sidebar.php'; ?>
       <div class="col-9">
         <div class="article-wrapper p-3">
-          <div class="article">
-            <div class="header-content-article text-end mt-2">
+          <div class="header-content-article text-center mb-45">
+            <div class="fw-bold">
               <h4>ARTICLE</h4>
             </div>
             <div class="main-content-article mt-4">
@@ -145,7 +166,7 @@ session_start();
   
         },
         {
-          title: "Hypnosis",
+          title: "Referensi",
           
           content: "Rousseaux, F., Faymonville, M. E., Nyssen, A. S., Dardenne, N., Ledoux, D., Massion, P. B., & Vanhaudenhuyse, A. (2020). Can hypnosis and virtual reality reduce anxiety, pain and fatigue among patients who undergo cardiac surgery: a randomised controlled trial. Trials, 21(1), 330. https://doi.org/10.1186/s13063-020-4222-6 <p>Fisch S, Trivaković-Thiel S, Roll S, Keller T, Binting S, Cree M, Brinkhaus B, Teut M. Group hypnosis for stress reduction and improved stress coping: a multicenter randomized controlled trial. BMC Complement Med Ther. 2020 Nov 13;20(1):344. doi: 10.1186/s12906-020-03129-6. PMID: 33187503; PMCID: PMC7664040.<p> Leo, D. G., Keller, S. S., & Proietti, R. (2024). 'Close your eyes and relax': the role of hypnosis in reducing anxiety, and its implications for the prevention of cardiovascular diseases. Frontiers in psychology, 15, 1411835. https://doi.org/10.3389/fpsyg.2024.1411835 <p> Timothy J. Legg, PhD, PsyD, (2018, August 31). How to Perform Self-Hypnosis for Anxiety. Healthline. https://www.healthline.com/health/mental-health/self-hypnosis-for-anxiety",
   
@@ -175,7 +196,7 @@ session_start();
           video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
         },
         {
-          title: "Meditation ",
+          title: "Referensi",
        
           content: "Bostock, S., Crosswell, A. D., Prather, A. A., & Steptoe, A. (2019). Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being. Journal of Occupational Health Psychology, 24(1), 127–138. https://doi.org/10.1037/ocp0000118<p>González-Valero, G., Zurita-Ortega, F., Ubago-Jiménez, J. L., & Puertas-Molero, P. (2019). Use of meditation and cognitive behavioral therapies for the treatment of stress, depression and anxiety in students. A systematic review and meta-analysis. In International Journal of Environmental Research and Public Health (Vol. 16, Issue 22). MDPI AG. https://doi.org/10.3390/ijerph16224394<p>Green, A. A., & Kinchen, E. V. (2021). The Effects of Mindfulness Meditation on Stress and Burnout in Nurses. In Journal of Holistic Nursing (Vol. 39, Issue 4, pp. 356–368). SAGE Publications Inc. https://doi.org/10.1177/08980101211015818<p>Huberty, J., Green, J., Glissmann, C., Larkey, L., Puzia, M., & Lee, C. (2019). Efficacy of the mindfulness meditation mobile app “calm” to reduce stress among college students: Randomized controlled trial. JMIR MHealth and UHealth, 7(6). https://doi.org/10.2196/14273<p>Lyzwinski, L. N., Caffery, L., Bambling, M., & Edirippulige, S. (2019). The mindfulness app trial for weight, weight-related behaviors, and stress in university students: Randomized controlled trial. JMIR MHealth and UHealth, 7(4). https://doi.org/10.2196/12210<p>Mindful. (2023, 06 January). Mindfulness Meditation: How to Do It. https://www.mindful.org/mindfulness-how-to-do-it/ ",
           
