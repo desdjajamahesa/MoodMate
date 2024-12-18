@@ -265,28 +265,28 @@ if (!$conn) {
        
           content: "Mindfulness adalah konsep penting dalam praktik meditasi Buddha, yang menjadi berpengaruh di Barat melalui adopsi dalam teknik psikoterapi, mungkin yang paling terkenal adalah Mindfulness‐Based Stress Reduction Program karya Jon Kabat‐Zinn. Meditasi mindfulness dapat dikatakan menginduksi keadaan kesadaran yang berubah, dalam arti yang lemah, melalui perubahan fokus perhatian, misalnya terhadap keadaan tubuh. Mindfulness digambarkan sebagai pergeseran perspektif dan pelepasan terhadap sensasi dan pikiran, membiarkan seseorang menerima daripada menghindari hal yang tidak menyenangkan. Mindfulness-based stress reduction (MBSR). yang dikembangkan oleh Kabat-Zinn pada tahun 1970-an adalah modalitas meditasi kesadaran yang paling banyak digunakan.",
           
-          video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY"
+          
         },
         {
           title: "Meditation ",
        
           content: "Istilah meditasi mencakup semua praktik pelatihan yang dirancang untuk menyadari proses mental dan tubuh, yang dapat dikelompokkan menjadi dua jenis yang lebih luas: praktik kesadaran konsentratif dan terbuka. Jenis pertama mengharuskan perhatian diarahkan dan dipertahankan secara sukarela terhadap objek internal atau eksternal (misalnya, kesadaran napas, sensasi tubuh, mantra musik). Sebaliknya,  jenis yang kedua menyiratkan membiarkan perhatian, tidak ada objek perhatian yang dipilih sebelumnya. Ketika meditasi mencakup wawasan, perhatian meluas untuk mempertimbangkan sifat-sifat keadaan mental, seperti kefanaan atau kepemilikan yang dirasakan, yang relevan dengan analisis Buddhis tentang perkembangan. Meditator pemula sering kali diperkenalkan dengan teknik perhatian terfokus sebelum pemantauan terbuka, karena keterampilan metakognitif yang dikembangkan oleh meditasi perhatian terfokus dapat membantu pemantauan terbuka. ",
          
-          video: "https://youtu.be/cyMxWXlX9sU?si=EMr5G7t3NowgM1mR"
+         
         },
         {
           title: "Meditation ",
        
           content: "Untuk pemula, Anda bisa menetapkan waktu yang akan Anda gunakan untuk melakukan meditasi. Apabila tidak, Anda akan memiliki keinginan untuk cepat berhenti selama melakukan meditasi, sehingga pemula sebaiknya memulai dengan waktu yang singkat (5 sampai 10 menit saja). Lalu Anda bisa lakukan secara bertahap dengan dua kali dari waktu sebelumnya, hingga mencapai 45 menit atau bahkan satu jam. Lakukan meditasi ini pada pagi, sore, atau bahkan keduanya. Saat melakukan meditasi pilih tempat yang sekiranya jauh dari gangguan dan kebisingan. Berikut salah satu cara melakukan meditasi: <p>1.  Lakukan dalam posisi duduk, Anda bisa duduk dimanapun (dikursi, bantal meditasi, ditaman, atau tempat lainnya yang memberikan anda ketenangan). <p>2. Perhatikan posisi kaki Anda (Bila diatas bantal meditasi atau matras, duduklah seperti posisi yoga. Apabila Anda duduk diatas kursi, sebaiknya telapak kaki menyantuh lantai).<p>3. Tubuh posisi tegak tetapi tidak kaku.<p>4. Posisikan tangan diatas kaki atau paha Anda.<p>5. Turunkan dagu sedikit dan biarkan pandangan Anda kebawah atau dengan menutup mata.<p>6. Tenangkan diri sejenak, fokuskan perhatian pada pernapasan atau sensasi tubuh.<p>7. Rasakan napas saat menarik dan membuang napas. <p>8. Perhatian Anda akan pergi “berpetualang”, saat Anda tersadar pikiran Anda kembalikan perhatian pada pernapasan.<p>9. Berlatih untuk berhenti sejenak sebelum melakukan gerakan fisik apapun. <p>10. Teruslah untuk fokus pada pikiran dan coba untuk membayangkan “berpetualang” ke situasi yang membuat Anda tenang.<p>11. Setelah dirasa cukup, mulai angkat lengan dengan perlahan dan bukalah mata Anda. Diam sejenak untuk memperhatikan suara-suara di sekitar Anda, sensasi pada tubuh Anda, pikiran dan emosi Anda. ",
       
-          video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
+          
         },
         {
           title: "Referensi",
        
           content: "Bostock, S., Crosswell, A. D., Prather, A. A., & Steptoe, A. (2019). Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being. Journal of Occupational Health Psychology, 24(1), 127–138. https://doi.org/10.1037/ocp0000118<p>González-Valero, G., Zurita-Ortega, F., Ubago-Jiménez, J. L., & Puertas-Molero, P. (2019). Use of meditation and cognitive behavioral therapies for the treatment of stress, depression and anxiety in students. A systematic review and meta-analysis. In International Journal of Environmental Research and Public Health (Vol. 16, Issue 22). MDPI AG. https://doi.org/10.3390/ijerph16224394<p>Green, A. A., & Kinchen, E. V. (2021). The Effects of Mindfulness Meditation on Stress and Burnout in Nurses. In Journal of Holistic Nursing (Vol. 39, Issue 4, pp. 356–368). SAGE Publications Inc. https://doi.org/10.1177/08980101211015818<p>Huberty, J., Green, J., Glissmann, C., Larkey, L., Puzia, M., & Lee, C. (2019). Efficacy of the mindfulness meditation mobile app “calm” to reduce stress among college students: Randomized controlled trial. JMIR MHealth and UHealth, 7(6). https://doi.org/10.2196/14273<p>Lyzwinski, L. N., Caffery, L., Bambling, M., & Edirippulige, S. (2019). The mindfulness app trial for weight, weight-related behaviors, and stress in university students: Randomized controlled trial. JMIR MHealth and UHealth, 7(4). https://doi.org/10.2196/12210<p>Mindful. (2023, 06 January). Mindfulness Meditation: How to Do It. https://www.mindful.org/mindfulness-how-to-do-it/ ",
           
-          video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36"
+        
         },
         {
           title: "Meditation ",
@@ -313,6 +313,29 @@ if (!$conn) {
           content:"Referensi Video",
           video: "https://youtu.be/4wKh265mCiA?si=y1JIGH0WsFyvJj_G"
         },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/cyMxWXlX9sU?si=EMr5G7t3NowgM1mR"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36"
+        },
+      
+        
+        
         // Add more articles for meditation
       ]
     };
