@@ -16,8 +16,8 @@ body {
 }
 
 body {
-  background-color: var(--bg-primary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
 }
 
 /* ! NAVBAR CODE */
@@ -48,10 +48,15 @@ body {
 
 /* ! HERO CODE */
 #hero {
-  margin-top: 8rem;
-  margin-bottom: 6.5rem;
-  padding-top: 2rem;
-  scroll-margin-top: 8rem;
+  background: linear-gradient(to bottom, #97bcd6, #6a82fb);
+  margin: 0;
+  padding-top: 120px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .title-text {
@@ -63,18 +68,19 @@ body {
   text-align: justify;
 }
 
-.hero-btn {
-}
-
 .img-fluid {
   max-width: 80%;
+  height: auto;
 }
 /* ! END CODE */
 
 /* ! MOOD TRACKER CODE */
 #mood-tracker {
-  scroll-margin-top: 7rem;
-  background-color: var(--bg-secondary);
+  background: linear-gradient(to bottom, #6a82fb, #fc5c7d);
+  margin: 0;
+  padding-top: 120px;
+  position: relative;
+  z-index: 0;
 }
 
 .text-title-mood-tracker {
@@ -87,6 +93,10 @@ body {
   margin: 1rem;
   background-color: var(--bg-primary);
   border-color: var(--light-text);
+}
+
+.card-body .card-text {
+  text-align: justify;
 }
 
 .row > .col-4 {
@@ -123,19 +133,164 @@ body {
 
 /* ! MENTAL HEALTH CODE */
 #mental-health {
-  scroll-margin-top: 7rem;
+  background: linear-gradient(to bottom, #fc5c7d, #6a82fb);
+  margin: 0;
+  padding-top: 120px;
+  position: relative;
+  z-index: 0;
+}
+
+#mental-health .row {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Tambahkan jarak antar card */
+  flex-wrap: wrap; /* Pastikan card responsif di layar kecil */
+}
+
+#mental-health h1 {
+  margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+}
+
+#mental-health p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.15); /* Transparan putih */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efek melayang */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Button Styling */
+.btn-outline-light {
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #6a82fb;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* CTA Section */
+.cta-section h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.btn-lg {
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.btn-lg:hover {
+  background-color: #fff;
+  color: #6a82fb;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #mental-health h1 {
+    font-size: 2.5rem;
+  }
+
+  #mental-health p {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 0.4rem 1.2rem;
+  }
 }
 /* ! END CODE */
 
 /* ! JOURNAL CODE */
 #journal {
-  scroll-margin-top: 7rem;
-  background-color: var(--bg-secondary);
+  background: linear-gradient(to bottom, #6a82fb, #fc5c7d);
+  margin: 0;
+  padding-top: 120px;
 }
 /* ! END CODE */
 
 /* ! ARTICLE CODE */
 #article {
-  scroll-margin-top: 7rem;
+  background: linear-gradient(to bottom, #fc5c7d, #6a82fb);
+  margin: 0;
+  padding: 120px;
+}
+
+.pdf-container {
+  margin-top: 20px;
+}
+
+/* Styling iframe agar lebih besar */
+/* Perbesar iframe PDF */
+.accordion-body iframe {
+  width: 100%; /* Lebar penuh */
+  height: 700px; /* Tinggi lebih besar */
+  border: none; /* Hilangkan border */
+  margin-top: 15px; /* Beri jarak ke atas */
+}
+
+/* List styling */
+.accordion-body ul li {
+  margin-bottom: 15px;
+}
+
+.accordion-body a {
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.accordion-body a:hover {
+  color: #ffcccb; /* Warna hover */
+  text-decoration: underline;
+}
+
+/* ! END CODE */
+
+/* ! FOOTER CODE */
+footer {
+  background-image: url('../assets/images/background-navbar.svg');
+  color: var(--bg-secondary);
 }
 /* ! END CODE */

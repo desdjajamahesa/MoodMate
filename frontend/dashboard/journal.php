@@ -11,11 +11,11 @@ if (!$conn) {
     die("Gagal terhubung ke database: " . mysqli_connect_error());
 }
 
-// Periksa apakah user sudah login
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
-    exit();
-}
+// // Periksa apakah user sudah login
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 ?>
 
 <!DOCTYPE html>
