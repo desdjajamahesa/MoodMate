@@ -142,7 +142,7 @@ if (!$conn) {
         <div id="journalHistory">
             <?php
             $user_id = $_SESSION['user_id'];
-            $query = "SELECT id, content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC";
+            $query = "SELECT id, content, created_at FROM journal_entries WHERE user_id = ? ORDER BY created_at DESC";
             $stmt = mysqli_prepare($conn, $query);
             mysqli_stmt_bind_param($stmt, "i", $user_id);
             mysqli_stmt_execute($stmt);

@@ -1,4 +1,15 @@
 <?php
+session_start();
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "moodmate";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    die("Gagal terhubung ke database: " . mysqli_connect_error());
+}
 // session_start();
 // if (!isset($_SESSION['user'])) {
 //   header("Location: ../login.php");

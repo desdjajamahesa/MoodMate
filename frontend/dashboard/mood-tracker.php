@@ -4,6 +4,8 @@
 //   header("Location: ../login.php");
 //   exit();
 // }
+session_start();
+
 ?>
 
 <!DOCTYPE html>
