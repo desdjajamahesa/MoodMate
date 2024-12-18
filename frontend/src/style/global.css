@@ -294,3 +294,158 @@ footer {
   color: var(--bg-secondary);
 }
 /* ! END CODE */
+
+
+/* GENERAL RESPONSIVE SETTINGS */
+.container, .container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* NAVBAR RESPONSIVE */
+@media (max-width: 992px) {
+  .navbar .navbar-brand img {
+    width: 60px; /* Ukuran logo lebih kecil */
+    height: 60px;
+  }
+
+  .navbar-brand-text {
+    margin-top: -40px; /* Atur jarak teks logo */
+  }
+
+  .navbar-nav {
+    text-align: center; /* Navbar link menjadi center */
+  }
+
+  .navbar .btn {
+    margin: 5px 0; /* Atur jarak tombol login dan register */
+  }
+}
+
+/* HERO RESPONSIVE */
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 100px;
+    height: auto; /* Sesuaikan tinggi hero */
+    text-align: center;
+  }
+
+  #hero .col-md-6 {
+    padding: 10px; /* Kurangi padding */
+  }
+
+  .title-text {
+    font-size: 1.8rem; /* Ukuran teks lebih kecil */
+  }
+
+  .img-fluid {
+    max-width: 100%; /* Gambar menyesuaikan layar */
+  }
+}
+
+/* MOOD TRACKER RESPONSIVE */
+@media (max-width: 992px) {
+  #mood-tracker .row {
+    flex-direction: column;
+    align-items: center; /* Kartu di tengah */
+  }
+
+  .custom-card-up, .custom-card-down {
+    margin: 1rem 0; /* Reset margin */
+  }
+
+  .card {
+    width: 80%; /* Kartu melebar untuk layar kecil */
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 90%;
+  }
+
+  .card-title {
+    font-size: 1.2rem; /* Ukuran judul lebih kecil */
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* MENTAL HEALTH SECTION RESPONSIVE */
+@media (max-width: 992px) {
+  #mental-health .row {
+    gap: 10px;
+  }
+
+  .card {
+    width: 80%;
+    margin-bottom: 15px; /* Tambahkan jarak antar card */
+  }
+}
+
+@media (max-width: 768px) {
+  #mental-health h1 {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .btn-outline-light {
+    font-size: 0.9rem;
+  }
+}
+
+/* JOURNAL RESPONSIVE */
+@media (max-width: 992px) {
+  #journal .col-md-5 {
+    width: 100%; /* Kolom memenuhi layar */
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .text-title-journal {
+    font-size: 1.8rem; /* Ukuran judul lebih kecil */
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
+
+/* ARTICLE SECTION RESPONSIVE */
+@media (max-width: 992px) {
+  .accordion-body iframe {
+    height: 400px; /* Iframe lebih kecil untuk layar kecil */
+  }
+}
+
+@media (max-width: 768px) {
+  .accordion-button {
+    font-size: 1rem; /* Ukuran teks accordion lebih kecil */
+  }
+
+  .accordion-body iframe {
+    height: 300px;
+  }
+}
+
+/* FOOTER RESPONSIVE */
+@media (max-width: 768px) {
+  footer .row {
+    text-align: center;
+  }
+
+  footer .col-md-4 {
+    margin-top: 15px; /* Tambahkan jarak antar kolom */
+  }
+}
