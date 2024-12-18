@@ -121,22 +121,15 @@ button:hover {
 }
 
 /* Menambahkan gaya pada pagination */
-.pagination {
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination .page-item {
-  margin: 0 5px;
+.pagination .page-item.active .page-link {
+  background-color: var(--nav-color);
+  color: #fff;
+  border-color: var(--nav-color);
 }
 
 .pagination .page-link {
-  border-radius: 50px;
-  border: 1px solid var(--nav-color);
   color: var(--nav-color);
-  font-weight: bold;
-  padding: 10px 15px;
-  transition: all 0.3s ease;
+  border-radius: 50px;
 }
 
 .pagination .page-link:hover {
@@ -144,12 +137,11 @@ button:hover {
   color: #fff;
 }
 
-.pagination .page-item.active .page-link {
-  background-color: var(--nav-color);
-  color: #fff;
-  border: 1px solid var(--nav-color);
+.pagination .page-item.disabled .page-link {
+  color: #ccc;
+  pointer-events: none;
+  background-color: #f8f9fa;
 }
-
 /* Responsif untuk gambar dan video */
 iframe {
   width: 100%;

@@ -30,80 +30,105 @@ if (!$conn) {
   <link rel="stylesheet" href="../src/style/sidebar.css" />
   <link rel="stylesheet" href="../src/style/article.css" />
   <style>
-      body {
+    body {
       background-color: var(--bg-primary);
       font-family: 'Arial', sans-serif;
     }
+
     .header-content-article {
       background-color: var(--bg-secondary);
       color: var(--light-text);
       padding: 1.5rem;
       border-radius: 15px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
+
     .pagination {
       justify-content: center;
       margin-top: 20px;
     }
+
     .card {
       margin-bottom: 10px;
     }
+
     .collapse-video {
       margin-top: 10px;
     }
 
-    /* CSS untuk memastikan artikel bisa discroll */
-    .card-body {
-      max-height: 380px; /* Batas tinggi artikel */
-      overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
-      padding-right: 10px; /* Memberikan ruang untuk scroll */
-    }
-
-    .article-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .article-content {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    .article-introduction {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
+    /* Responsiveness untuk artikel */
     .article-wrapper {
       background-color: var(--nav-color);
       border-radius: 20px;
-      padding: 2rem;
+      padding: 1.5rem;
       margin: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .session-content {
+      margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 1rem;
+    }
+
+    /* Responsiveness untuk grid */
+    @media (max-width: 768px) {
+      .col-9 {
+        padding: 0 1rem;
+      }
+
+      .article-wrapper {
+        padding: 1rem;
+      }
+
+      .header-content-article {
+        padding: 1rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        margin: 5px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .article-wrapper {
+        margin: 0.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row flex-wrap">
+      <!-- Sidebar -->
       <?php include 'sidebar.php'; ?>
-      <div class="col-9">
+
+      <!-- Konten Artikel -->
+      <div class="col-lg-9 col-md-12">
         <div class="article-wrapper p-3">
           <div class="header-content-article text-center mb-45">
             <div class="fw-bold">
               <h4>ARTICLE</h4>
             </div>
             <div class="main-content-article mt-4">
-              <div class="d-flex justify-content-center mb-2">
-                <button class="btn  mx-2" id="deepBreathingBtn">Deep Breathing</button>
-                <button class="btn  mx-2" id="hypnosisBtn">Hypnosis</button>
-                <button class="btn  mx-2" id="meditationBtn">Meditation</button>
+              <!-- Tombol Filter Artikel -->
+              <div class="d-flex flex-wrap justify-content-center mb-2">
+                <button class="btn btn-outline-primary mx-2" id="deepBreathingBtn">Deep Breathing</button>
+                <button class="btn btn-outline-primary mx-2" id="hypnosisBtn">Hypnosis</button>
+                <button class="btn btn-outline-primary mx-2" id="meditationBtn">Meditation</button>
               </div>
+
+              <!-- Konten Artikel -->
               <div id="deepBreathingContent" class="session-content" style="display: none;">
                 <div id="deepBreathingArticles"></div>
                 <ul class="pagination" id="deepBreathingPagination"></ul>
@@ -149,7 +174,27 @@ if (!$conn) {
           
           content: " Ariga, R. A. (2019). Decrease anxiety among students who will do the objective structured clinical examination with deep breathing relaxation technique. Open Access Macedonian Journal of Medical Sciences, 7(16), 2619–2622. https://doi.org/10.3889/oamjms.2019.409 <p>Bontula, A., Preston, R. C., Shannon, E., Wilson, C., & Fitter, N. T. (2023). Deep Pressure Therapy: A Promising Anxiety Treatment for Individuals With High Touch Comfort? IEEE Transactions on Haptics, 16(4), 549–554. https://doi.org/10.1109/TOH.2023.3272623 <p>Khng, K. H. (2017). A better state-of-mind: deep breathing reduces state anxiety and enhances test performance through regulating test cognitions in children. Cognition and Emotion, 31(7), 1502–1510. https://doi.org/10.1080/02699931.2016.1233095 <p>Magnon, V., Dutheil, F., & Vallet, G. T. (2021). Benefits from one session of deep and slow breathing on vagal tone and anxiety in young and older adults. Scientific Reports, 11(1). https://doi.org/10.1038/s41598-021-98736-9<p>Perciavalle, V., Blandini, M., Fecarotta, P., Buscemi, A., Di Corrado, D., Bertolo, L., Fichera, F., & Coco, M. (2017). The role of deep breathing on stress. Neurological Sciences, 38(3), 451–458. https://doi.org/10.1007/s10072-016-2790-8<p> Timothy J. Legg, PhD, PsyD, (2023, March 22). 8 Breathing Exercises to Try When You Feel Anxious. Healthline. https://www.healthline.com/health/breathing-exercises-for-anxiety",
           
-        }
+        },
+        {
+          title: "Deep Breathing ",
+          content:"Referensi Video",
+          video: "https://youtu.be/0LqWXlBfBxE?si=sExkgAlSkL2udOkc"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/Lysn2Zoio8Y?si=_7RT4edz4sstCKAy"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/_A0udZPwHxs?si=7sOOMH2WqlnxLfVf"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/odADwWzHR24?si=EYNFBiEExXHTVb8H"
+        },
       ],
       hypnosis: [
         {
@@ -181,6 +226,36 @@ if (!$conn) {
           
           content: "Rousseaux, F., Faymonville, M. E., Nyssen, A. S., Dardenne, N., Ledoux, D., Massion, P. B., & Vanhaudenhuyse, A. (2020). Can hypnosis and virtual reality reduce anxiety, pain and fatigue among patients who undergo cardiac surgery: a randomised controlled trial. Trials, 21(1), 330. https://doi.org/10.1186/s13063-020-4222-6 <p>Fisch S, Trivaković-Thiel S, Roll S, Keller T, Binting S, Cree M, Brinkhaus B, Teut M. Group hypnosis for stress reduction and improved stress coping: a multicenter randomized controlled trial. BMC Complement Med Ther. 2020 Nov 13;20(1):344. doi: 10.1186/s12906-020-03129-6. PMID: 33187503; PMCID: PMC7664040.<p> Leo, D. G., Keller, S. S., & Proietti, R. (2024). 'Close your eyes and relax': the role of hypnosis in reducing anxiety, and its implications for the prevention of cardiovascular diseases. Frontiers in psychology, 15, 1411835. https://doi.org/10.3389/fpsyg.2024.1411835 <p> Timothy J. Legg, PhD, PsyD, (2018, August 31). How to Perform Self-Hypnosis for Anxiety. Healthline. https://www.healthline.com/health/mental-health/self-hypnosis-for-anxiety",
   
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/_QCtzOb8_XA?si=ou7xfvJ5TlosuKg1"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/cX47UAy4rmc?si=Wli_hTjOM6ToTKzf"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/4ffr26sUTLI?si=645SDmdxLSHeSqPI"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/4ffr26sUTLI?si=645SDmdxLSHeSqPI"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/tbTyH83P1NY?si=zsdxZ_Y2YZk-qEvp"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/lOfeotANFQ4?si=kHL6yF9oTUR9xtYv"
         },
         // Add more articles for hypnosis
       ],
@@ -347,6 +422,7 @@ if (!$conn) {
   });
   pagination.appendChild(nextItem);
 }
+
 
       displayPage(currentPage);
       updatePagination();
