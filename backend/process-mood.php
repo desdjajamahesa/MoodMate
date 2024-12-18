@@ -1,34 +1,33 @@
 <?php
+header("Content-Type: application/json");
 session_start();
-require_once '../includes/config.php'; // Koneksi database
 
-// Debug: Cek apakah user_id tersedia
-if (!isset($_SESSION['user_id'])) {
-    die('Session user_id tidak ditemukan! Pastikan Anda login terlebih dahulu.');
-}
+// Database connection
+require_once '../includes/db_config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_SESSION['user_id'] ?? null; // Ambil user_id dari sesi
-    $mood_scale = $_POST['mood_scale'] ?? '';
-    $mood_description = $_POST['mood_description'] ?? '';
-    $impact_factors = isset($_POST['impact_factors']) ? implode(", ", $_POST['impact_factors']) : '';
+// Ambil data JSON dari frontend
+$data = json_decode(file_get_contents("php://input"), true);
 
-    // Validasi input
-    if ($user_id && $mood_scale && $mood_description) {
-        $query = "INSERT INTO mood_entries (user_id, mood_scale, mood_description, impact_factors) VALUES (?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "iiss", $user_id, $mood_scale, $mood_description, $impact_factors);
+if (isset($data['user_id'], $data['mood_value'], $data['mood_options'], $data['activities'])) {
+    $user_id = intval($data['user_id']);
+    $mood_value = intval($data['mood_value']);
+    $mood_options = htmlspecialchars($data['mood_options']);
+    $activities = htmlspecialchars($data['activities']);
 
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: ../frontend/dashboard/mood-tracker.php?status=success");
-            exit();
-        } else {
-            header("Location: ../frontend/dashboard/mood-tracker.php?status=error");
-            exit();
-        }
+    // Query SQL untuk menyimpan data
+    $query = "INSERT INTO mood_tracker (user_id, mood_value, mood_options, activities) 
+              VALUES (?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iiss", $user_id, $mood_value, $mood_options, $activities);
+
+    if ($stmt->execute()) {
+        echo json_encode(["status" => "success", "message" => "Data berhasil disimpan"]);
     } else {
-        header("Location: ../frontend/dashboard/mood-tracker.php?status=invalid");
-        exit();
+        echo json_encode(["status" => "error", "message" => "Gagal menyimpan data"]);
     }
+    $stmt->close();
+} else {
+    echo json_encode(["status" => "error", "message" => "Data tidak lengkap"]);
 }
-?>
+$conn->close();

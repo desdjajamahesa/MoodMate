@@ -1,34 +1,26 @@
-<?php
+<?php 
 session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mood Tracker - MoodMate</title>
-  <!-- ! LINK FAVICON WEB -->
   <link rel="shortcut icon" href="../src/assets/images/MoodMate-Logo.png" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
-  <!-- ! LINK BOOTSTRAP CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <!-- ! LINK SIDEBAR CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../src/style/sidebar.css" />
-  <!-- ! LINK MOOD TRACKER CSS -->
   <link rel="stylesheet" href="../src/style/moodtracker.css" />
 </head>
-
 <body>
   <div class="container-fluid">
     <div class="row">
-      <!-- ! SIDEBAR OPEN CODE -->
-      <?php include 'sidebar.php' ?>
-      <!-- ! SIDEBAR END CODE -->
+      <!-- SIDEBAR -->
+      <?php include 'sidebar.php'; ?>
 
       <!-- MOOD TRACKER CONTENT -->
-      <div class="col-9 mood-tracker-wrapper d-flex justify-content-center align-items-center">
+      <div class="col-9 mood-tracker-wrapper d-flex justify-content-center align-items-center m-auto">
         <div class="mood-tracker p-4">
           <!-- Header -->
           <div class="header-content text-center mb-4">
@@ -58,15 +50,18 @@ session_start();
           <div class="text-center">
             <button id="nextBtn" class="btn btn-primary rounded-pill px-4 py-2">Next</button>
           </div>
+
+          <!-- Riwayat Button -->
+          <div class="text-center">
+            <button id="riwayatBtn" class="btn btn-primary rounded-pill px-4 py-2">Cek Data Mood Kamu</button>
+          </div>
         </div>
       </div>
-      <!-- END MOOD TRACKER CONTENT -->
     </div>
   </div>
 
-  <!-- ! LINK BOOTSTRAP JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- LINK BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../src/js/moodtracker.js"></script>
 </body>
-
 </html>

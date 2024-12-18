@@ -125,7 +125,7 @@ if (!$conn) {
             <!-- Journal Content -->
             <div class="col-9 d-flex">
                 <div class="journal-wrapper col-8">
-                    <h4 class="mb-4">JOURNAL - Tuang perasaan dan moment mu disini, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
+                    <h4 class="mb-4">JOURNAL - Tuang perasaan dan moment kamu disini, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
                     <form method="POST" action="../../backend/save_journal.php">
         <textarea id="journalEntry" name="journal_content"></textarea>
         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
