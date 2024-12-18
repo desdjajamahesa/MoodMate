@@ -30,80 +30,105 @@ if (!$conn) {
   <link rel="stylesheet" href="../src/style/sidebar.css" />
   <link rel="stylesheet" href="../src/style/article.css" />
   <style>
-      body {
+    body {
       background-color: var(--bg-primary);
       font-family: 'Arial', sans-serif;
     }
+
     .header-content-article {
       background-color: var(--bg-secondary);
       color: var(--light-text);
       padding: 1.5rem;
       border-radius: 15px;
       margin-bottom: 1.5rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
+
     .pagination {
       justify-content: center;
       margin-top: 20px;
     }
+
     .card {
       margin-bottom: 10px;
     }
+
     .collapse-video {
       margin-top: 10px;
     }
 
-    /* CSS untuk memastikan artikel bisa discroll */
-    .card-body {
-      max-height: 380px; /* Batas tinggi artikel */
-      overflow-y: auto; /* Menambahkan scroll jika konten lebih panjang */
-      padding-right: 10px; /* Memberikan ruang untuk scroll */
-    }
-
-    .article-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .article-content {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-top: 10px;
-    }
-
-    .article-introduction {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      font-style: italic;
-    }
-
+    /* Responsiveness untuk artikel */
     .article-wrapper {
       background-color: var(--nav-color);
       border-radius: 20px;
-      padding: 2rem;
+      padding: 1.5rem;
       margin: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .session-content {
+      margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 1rem;
+    }
+
+    /* Responsiveness untuk grid */
+    @media (max-width: 768px) {
+      .col-9 {
+        padding: 0 1rem;
+      }
+
+      .article-wrapper {
+        padding: 1rem;
+      }
+
+      .header-content-article {
+        padding: 1rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        margin: 5px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .article-wrapper {
+        margin: 0.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row flex-wrap">
+      <!-- Sidebar -->
       <?php include 'sidebar.php'; ?>
-      <div class="col-9">
+
+      <!-- Konten Artikel -->
+      <div class="col-lg-9 col-md-12">
         <div class="article-wrapper p-3">
           <div class="header-content-article text-center mb-45">
             <div class="fw-bold">
               <h4>ARTICLE</h4>
             </div>
             <div class="main-content-article mt-4">
-              <div class="d-flex justify-content-center mb-2">
-                <button class="btn  mx-2" id="deepBreathingBtn">Deep Breathing</button>
-                <button class="btn  mx-2" id="hypnosisBtn">Hypnosis</button>
-                <button class="btn  mx-2" id="meditationBtn">Meditation</button>
+              <!-- Tombol Filter Artikel -->
+              <div class="d-flex flex-wrap justify-content-center mb-2">
+                <button class="btn btn-outline-primary mx-2" id="deepBreathingBtn">Deep Breathing</button>
+                <button class="btn btn-outline-primary mx-2" id="hypnosisBtn">Hypnosis</button>
+                <button class="btn btn-outline-primary mx-2" id="meditationBtn">Meditation</button>
               </div>
+
+              <!-- Konten Artikel -->
               <div id="deepBreathingContent" class="session-content" style="display: none;">
                 <div id="deepBreathingArticles"></div>
                 <ul class="pagination" id="deepBreathingPagination"></ul>
@@ -149,7 +174,27 @@ if (!$conn) {
           
           content: " Ariga, R. A. (2019). Decrease anxiety among students who will do the objective structured clinical examination with deep breathing relaxation technique. Open Access Macedonian Journal of Medical Sciences, 7(16), 2619–2622. https://doi.org/10.3889/oamjms.2019.409 <p>Bontula, A., Preston, R. C., Shannon, E., Wilson, C., & Fitter, N. T. (2023). Deep Pressure Therapy: A Promising Anxiety Treatment for Individuals With High Touch Comfort? IEEE Transactions on Haptics, 16(4), 549–554. https://doi.org/10.1109/TOH.2023.3272623 <p>Khng, K. H. (2017). A better state-of-mind: deep breathing reduces state anxiety and enhances test performance through regulating test cognitions in children. Cognition and Emotion, 31(7), 1502–1510. https://doi.org/10.1080/02699931.2016.1233095 <p>Magnon, V., Dutheil, F., & Vallet, G. T. (2021). Benefits from one session of deep and slow breathing on vagal tone and anxiety in young and older adults. Scientific Reports, 11(1). https://doi.org/10.1038/s41598-021-98736-9<p>Perciavalle, V., Blandini, M., Fecarotta, P., Buscemi, A., Di Corrado, D., Bertolo, L., Fichera, F., & Coco, M. (2017). The role of deep breathing on stress. Neurological Sciences, 38(3), 451–458. https://doi.org/10.1007/s10072-016-2790-8<p> Timothy J. Legg, PhD, PsyD, (2023, March 22). 8 Breathing Exercises to Try When You Feel Anxious. Healthline. https://www.healthline.com/health/breathing-exercises-for-anxiety",
           
-        }
+        },
+        {
+          title: "Deep Breathing ",
+          content:"Referensi Video",
+          video: "https://youtu.be/0LqWXlBfBxE?si=sExkgAlSkL2udOkc"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/Lysn2Zoio8Y?si=_7RT4edz4sstCKAy"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/_A0udZPwHxs?si=7sOOMH2WqlnxLfVf"
+        },
+        {
+          title: "Deep Breathing",
+          content:"Referensi Video",
+          video: "https://youtu.be/odADwWzHR24?si=EYNFBiEExXHTVb8H"
+        },
       ],
       hypnosis: [
         {
@@ -182,6 +227,36 @@ if (!$conn) {
           content: "Rousseaux, F., Faymonville, M. E., Nyssen, A. S., Dardenne, N., Ledoux, D., Massion, P. B., & Vanhaudenhuyse, A. (2020). Can hypnosis and virtual reality reduce anxiety, pain and fatigue among patients who undergo cardiac surgery: a randomised controlled trial. Trials, 21(1), 330. https://doi.org/10.1186/s13063-020-4222-6 <p>Fisch S, Trivaković-Thiel S, Roll S, Keller T, Binting S, Cree M, Brinkhaus B, Teut M. Group hypnosis for stress reduction and improved stress coping: a multicenter randomized controlled trial. BMC Complement Med Ther. 2020 Nov 13;20(1):344. doi: 10.1186/s12906-020-03129-6. PMID: 33187503; PMCID: PMC7664040.<p> Leo, D. G., Keller, S. S., & Proietti, R. (2024). 'Close your eyes and relax': the role of hypnosis in reducing anxiety, and its implications for the prevention of cardiovascular diseases. Frontiers in psychology, 15, 1411835. https://doi.org/10.3389/fpsyg.2024.1411835 <p> Timothy J. Legg, PhD, PsyD, (2018, August 31). How to Perform Self-Hypnosis for Anxiety. Healthline. https://www.healthline.com/health/mental-health/self-hypnosis-for-anxiety",
   
         },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/_QCtzOb8_XA?si=ou7xfvJ5TlosuKg1"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/cX47UAy4rmc?si=Wli_hTjOM6ToTKzf"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/4ffr26sUTLI?si=645SDmdxLSHeSqPI"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/4ffr26sUTLI?si=645SDmdxLSHeSqPI"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/tbTyH83P1NY?si=zsdxZ_Y2YZk-qEvp"
+        },
+        {
+          title: "Hypnosis",
+          content:"Referensi Video",
+          video: "https://youtu.be/lOfeotANFQ4?si=kHL6yF9oTUR9xtYv"
+        },
         // Add more articles for hypnosis
       ],
       meditation: [
@@ -190,28 +265,28 @@ if (!$conn) {
        
           content: "Mindfulness adalah konsep penting dalam praktik meditasi Buddha, yang menjadi berpengaruh di Barat melalui adopsi dalam teknik psikoterapi, mungkin yang paling terkenal adalah Mindfulness‐Based Stress Reduction Program karya Jon Kabat‐Zinn. Meditasi mindfulness dapat dikatakan menginduksi keadaan kesadaran yang berubah, dalam arti yang lemah, melalui perubahan fokus perhatian, misalnya terhadap keadaan tubuh. Mindfulness digambarkan sebagai pergeseran perspektif dan pelepasan terhadap sensasi dan pikiran, membiarkan seseorang menerima daripada menghindari hal yang tidak menyenangkan. Mindfulness-based stress reduction (MBSR). yang dikembangkan oleh Kabat-Zinn pada tahun 1970-an adalah modalitas meditasi kesadaran yang paling banyak digunakan.",
           
-          video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY"
+          
         },
         {
           title: "Meditation ",
        
           content: "Istilah meditasi mencakup semua praktik pelatihan yang dirancang untuk menyadari proses mental dan tubuh, yang dapat dikelompokkan menjadi dua jenis yang lebih luas: praktik kesadaran konsentratif dan terbuka. Jenis pertama mengharuskan perhatian diarahkan dan dipertahankan secara sukarela terhadap objek internal atau eksternal (misalnya, kesadaran napas, sensasi tubuh, mantra musik). Sebaliknya,  jenis yang kedua menyiratkan membiarkan perhatian, tidak ada objek perhatian yang dipilih sebelumnya. Ketika meditasi mencakup wawasan, perhatian meluas untuk mempertimbangkan sifat-sifat keadaan mental, seperti kefanaan atau kepemilikan yang dirasakan, yang relevan dengan analisis Buddhis tentang perkembangan. Meditator pemula sering kali diperkenalkan dengan teknik perhatian terfokus sebelum pemantauan terbuka, karena keterampilan metakognitif yang dikembangkan oleh meditasi perhatian terfokus dapat membantu pemantauan terbuka. ",
          
-          video: "https://youtu.be/cyMxWXlX9sU?si=EMr5G7t3NowgM1mR"
+         
         },
         {
           title: "Meditation ",
        
           content: "Untuk pemula, Anda bisa menetapkan waktu yang akan Anda gunakan untuk melakukan meditasi. Apabila tidak, Anda akan memiliki keinginan untuk cepat berhenti selama melakukan meditasi, sehingga pemula sebaiknya memulai dengan waktu yang singkat (5 sampai 10 menit saja). Lalu Anda bisa lakukan secara bertahap dengan dua kali dari waktu sebelumnya, hingga mencapai 45 menit atau bahkan satu jam. Lakukan meditasi ini pada pagi, sore, atau bahkan keduanya. Saat melakukan meditasi pilih tempat yang sekiranya jauh dari gangguan dan kebisingan. Berikut salah satu cara melakukan meditasi: <p>1.  Lakukan dalam posisi duduk, Anda bisa duduk dimanapun (dikursi, bantal meditasi, ditaman, atau tempat lainnya yang memberikan anda ketenangan). <p>2. Perhatikan posisi kaki Anda (Bila diatas bantal meditasi atau matras, duduklah seperti posisi yoga. Apabila Anda duduk diatas kursi, sebaiknya telapak kaki menyantuh lantai).<p>3. Tubuh posisi tegak tetapi tidak kaku.<p>4. Posisikan tangan diatas kaki atau paha Anda.<p>5. Turunkan dagu sedikit dan biarkan pandangan Anda kebawah atau dengan menutup mata.<p>6. Tenangkan diri sejenak, fokuskan perhatian pada pernapasan atau sensasi tubuh.<p>7. Rasakan napas saat menarik dan membuang napas. <p>8. Perhatian Anda akan pergi “berpetualang”, saat Anda tersadar pikiran Anda kembalikan perhatian pada pernapasan.<p>9. Berlatih untuk berhenti sejenak sebelum melakukan gerakan fisik apapun. <p>10. Teruslah untuk fokus pada pikiran dan coba untuk membayangkan “berpetualang” ke situasi yang membuat Anda tenang.<p>11. Setelah dirasa cukup, mulai angkat lengan dengan perlahan dan bukalah mata Anda. Diam sejenak untuk memperhatikan suara-suara di sekitar Anda, sensasi pada tubuh Anda, pikiran dan emosi Anda. ",
       
-          video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
+          
         },
         {
           title: "Referensi",
        
           content: "Bostock, S., Crosswell, A. D., Prather, A. A., & Steptoe, A. (2019). Mindfulness on-the-go: Effects of a mindfulness meditation app on work stress and well-being. Journal of Occupational Health Psychology, 24(1), 127–138. https://doi.org/10.1037/ocp0000118<p>González-Valero, G., Zurita-Ortega, F., Ubago-Jiménez, J. L., & Puertas-Molero, P. (2019). Use of meditation and cognitive behavioral therapies for the treatment of stress, depression and anxiety in students. A systematic review and meta-analysis. In International Journal of Environmental Research and Public Health (Vol. 16, Issue 22). MDPI AG. https://doi.org/10.3390/ijerph16224394<p>Green, A. A., & Kinchen, E. V. (2021). The Effects of Mindfulness Meditation on Stress and Burnout in Nurses. In Journal of Holistic Nursing (Vol. 39, Issue 4, pp. 356–368). SAGE Publications Inc. https://doi.org/10.1177/08980101211015818<p>Huberty, J., Green, J., Glissmann, C., Larkey, L., Puzia, M., & Lee, C. (2019). Efficacy of the mindfulness meditation mobile app “calm” to reduce stress among college students: Randomized controlled trial. JMIR MHealth and UHealth, 7(6). https://doi.org/10.2196/14273<p>Lyzwinski, L. N., Caffery, L., Bambling, M., & Edirippulige, S. (2019). The mindfulness app trial for weight, weight-related behaviors, and stress in university students: Randomized controlled trial. JMIR MHealth and UHealth, 7(4). https://doi.org/10.2196/12210<p>Mindful. (2023, 06 January). Mindfulness Meditation: How to Do It. https://www.mindful.org/mindfulness-how-to-do-it/ ",
           
-          video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36"
+        
         },
         {
           title: "Meditation ",
@@ -238,6 +313,29 @@ if (!$conn) {
           content:"Referensi Video",
           video: "https://youtu.be/4wKh265mCiA?si=y1JIGH0WsFyvJj_G"
         },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/j734gLbQFbU?si=nGujmyD7VpFJi0fY"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/cyMxWXlX9sU?si=EMr5G7t3NowgM1mR"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/O-6f5wQXSu8?si=pdrlNQXD8cK3hT1i"
+        },
+        {
+          title: "Meditation ",
+          content:"Referensi Video",
+          video: "https://youtu.be/vj0JDwQLof4?si=KW0C4p0G-wBNww36"
+        },
+      
+        
+        
         // Add more articles for meditation
       ]
     };
@@ -347,6 +445,7 @@ if (!$conn) {
   });
   pagination.appendChild(nextItem);
 }
+
 
       displayPage(currentPage);
       updatePagination();
