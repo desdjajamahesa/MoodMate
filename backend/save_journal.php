@@ -1,49 +1,45 @@
 <?php
 session_start();
-header('Content-Type: application/json'); // Response JSON
 
-// Pastikan user sudah login
+// Cek apakah user sudah login
 if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'error' => 'User tidak login']);
+    header("Location: login.php");
     exit();
 }
 
-// Koneksi ke database
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "moodmate";
 
+// Membuat koneksi ke database
 $conn = mysqli_connect($host, $user, $pass, $db);
 
 if (!$conn) {
-    echo json_encode(['success' => false, 'error' => 'Gagal terhubung ke database: ' . mysqli_connect_error()]);
-    exit();
+    die("Gagal terhubung ke database: " . mysqli_connect_error());
 }
 
-// Tangkap data POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_SESSION['user_id'];
-    $content = trim($_POST['content'] ?? '');
-    $created_at = date('Y-m-d H:i:s');
+// Ambil data dari form
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['journalEntry'])) {
+    $journalEntry = mysqli_real_escape_string($conn, $_POST['journalEntry']);
+    $user_id = $_SESSION['user_id']; // Ambil ID user dari session
 
-    if (empty($content)) {
-        echo json_encode(['success' => false, 'error' => 'Isi catatan tidak boleh kosong']);
-        exit();
-    }
-
-    // Query untuk insert
-    $query = "INSERT INTO journals (user_id, content, created_at) VALUES (?, ?, ?)";
+    // Query untuk menyimpan catatan jurnal
+    $query = "INSERT INTO journals (user_id, content) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $user_id, $content, $created_at);
+    mysqli_stmt_bind_param($stmt, "is", $user_id, $journalEntry);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo json_encode(['success' => true, 'message' => 'Catatan berhasil disimpan']);
+        // Jika berhasil, alihkan kembali ke halaman jurnal
+        header("Location: journal.php");
+        exit();
     } else {
-        echo json_encode(['success' => false, 'error' => 'Gagal menyimpan catatan: ' . mysqli_error($conn)]);
+        echo "Error: " . mysqli_error($conn);
     }
 
     mysqli_stmt_close($stmt);
-    mysqli_close($conn);
 }
+
+// Menutup koneksi database
+mysqli_close($conn);
 ?>

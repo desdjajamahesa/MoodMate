@@ -58,20 +58,7 @@ button:hover {
   transform: translateY(-2px);
 }
 
-#stressBtn {
-  background-color: #17a2b8;
-  color: white;
-}
 
-#anxietyBtn {
-  background-color: #ffc107;
-  color: white;
-}
-
-#hypnosisBtn {
-  background-color: #dc3545;
-  color: white;
-}
 
 #stressBtn:hover,
 #anxietyBtn:hover,
@@ -137,17 +124,30 @@ button:hover {
 .pagination {
   justify-content: center;
   margin-top: 20px;
-  padding-left: 0;
 }
 
-.page-item .page-link {
-  font-size: 1rem;
-  padding: 8px 16px;
+.pagination .page-item {
+  margin: 0 5px;
 }
 
-.page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
+.pagination .page-link {
+  border-radius: 50px;
+  border: 1px solid var(--nav-color);
+  color: var(--nav-color);
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+  background-color: var(--nav-color);
+  color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--nav-color);
+  color: #fff;
+  border: 1px solid var(--nav-color);
 }
 
 /* Responsif untuk gambar dan video */
@@ -163,4 +163,48 @@ iframe {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+/* Mengubah ukuran tombol */
+.btn {
+  font-size: 0.9rem; /* Mengurangi ukuran font tombol */
+  padding: 8px 15px; /* Menyesuaikan padding agar tombol lebih kecil */
+  border-radius: 25px; /* Membuat sudut tombol lebih melengkung */
+  transition: all 0.3s ease; /* Menambahkan transisi saat tombol di-hover */
+}
+
+/* Menambahkan efek hover untuk setiap tombol */
+.btn:hover {
+  transform: scale(1.05); /* Memberikan efek perbesaran saat di-hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan saat di-hover */
+}
+
+/* Tombol Deep Breathing */
+#deepBreathingBtn {
+  background-color: #66b3ff; /* Warna biru muda untuk tombol Deep Breathing */
+  border: none;
+}
+
+#deepBreathingBtn:hover {
+  background-color: #3399ff; /* Warna biru lebih gelap saat di-hover */
+}
+
+/* Tombol Hypnosis */
+#hypnosisBtn {
+  background-color: #66b3ff; /* Warna biru muda untuk tombol Hypnosis */
+  border: none;
+}
+
+#hypnosisBtn:hover {
+  background-color: #3399ff; /* Warna biru lebih gelap saat di-hover */
+}
+
+/* Tombol Meditation */
+#meditationBtn {
+  background-color: #66b3ff; /* Warna biru muda untuk tombol Meditation */
+  border: none;
+}
+
+#meditationBtn:hover {
+  background-color: #3399ff; /* Warna biru lebih gelap saat di-hover */
 }

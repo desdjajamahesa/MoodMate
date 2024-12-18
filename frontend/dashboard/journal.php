@@ -28,6 +28,59 @@ if (!$conn) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../src/style/sidebar.css" />
     <link rel="stylesheet" href="../src/style/journal.css" />
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/xbcylp9wkh20u9wzclqiyy82a0vvkoyiaph6nfmzedqxqhyd/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#journalEntry',
+            plugins: 'advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table paste code help wordcount',
+            toolbar: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | help',
+            height: 300
+        });
+    </script>
+    <style>
+        /* Mencegah scroll horizontal dan vertikal */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+       
+        /* Sidebar agar tetap responsif */
+        .sidebar {
+            flex: 1;
+            background-color: #f8f9fa;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        /* Konten utama */
+        .main-content {
+            flex: 2;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .journal-wrapper, .journal-history {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        /* Mengatur font dan layout agar lebih kecil */
+        h4, h5 {
+            font-size: 1rem;
+        }
+
+        button, textarea, .btn {
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            height: 150px;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -37,44 +90,57 @@ if (!$conn) {
             <!-- Journal Content -->
             <div class="col-9 d-flex">
                 <div class="journal-wrapper col-8">
-                    <h4 class="mb-4">JOURNAL - Selamat datang, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
-                    <form id="journalForm" data-user-id="<?php echo $_SESSION['user_id']; ?>">
-                        <textarea class="form-control mb-3" id="journalEntry" placeholder="Tulis catatanmu di sini..." rows="5"></textarea>
-                        <button type="submit" class="btn btn-primary">Simpan Catatan</button>
-                    </form>
+                    <h4 class="mb-4">JOURNAL - Tuang perasaan dan moment mu disini, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</h4>
+                    <form id="journalForm">
+  <textarea id="journalEntry" class="form-control" rows="4" placeholder="Tulis catatan Anda..."></textarea>
+  <button type="submit" class="btn btn-primary mt-3">Simpan Catatan</button>
+</form>
                 </div>
 
                 <!-- Journal History -->
-                <div class="journal-history col-4">
-                    <h5>Journal History</h5>
-                    <ul id="journalHistory" class="list-group">
-                        <?php
-                        $user_id = $_SESSION['user_id'];
-                        $query = "SELECT content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC";
-                        $stmt = mysqli_prepare($conn, $query);
-                        mysqli_stmt_bind_param($stmt, "i", $user_id);
-                        mysqli_stmt_execute($stmt);
-                        $result = mysqli_stmt_get_result($stmt);
+                <!-- Journal History -->
+<!-- Journal History -->
+<div class=" col-4 mt-3">
+    <button class="btn btn-primary w-100 text-start mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#journalHistoryCollapse" aria-expanded="false" aria-controls="journalHistoryCollapse">
+        Lihat History Jurnal
+    </button>
+    <div class="collapse" id="journalHistoryCollapse">
+        <h5>Journal History</h5>
+        <div id="journalHistory">
+            <?php
+            $user_id = $_SESSION['user_id'];
+            $query = "SELECT id, content, created_at FROM journals WHERE user_id = ? ORDER BY created_at DESC";
+            $stmt = mysqli_prepare($conn, $query);
+            mysqli_stmt_bind_param($stmt, "i", $user_id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
 
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<li class="list-group-item">';
-                                echo '<strong>' . date('d M Y, H:i', strtotime($row['created_at'])) . ':</strong> ';
-                                echo htmlspecialchars($row['content']);
-                                echo '</li>';
-                            }
-                        } else {
-                            echo '<li class="list-group-item text-muted text-center">Belum ada catatan jurnal</li>';
-                        }
-                        mysqli_stmt_close($stmt);
-                        ?>
-                    </ul>
-                </div>
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $journalId = $row['id'];
+                    echo '<button class="btn btn-primary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseJournal' . $journalId . '" aria-expanded="false" aria-controls="collapseJournal' . $journalId . '">';
+
+                    echo '<strong>' . date('d M Y, H:i', strtotime($row['created_at'])) . '</strong>';
+                    echo '</button>';
+                    echo '<div class="collapse" id="collapseJournal' . $journalId . '">';
+                    echo '<div class="card card-body">';
+                    echo htmlspecialchars($row['content']);
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<div class="alert alert-info text-center">Belum ada catatan jurnal</div>';
+            }
+            mysqli_stmt_close($stmt);
+            ?>
+        </div>
+    </div>
+</div>
+
             </div>
         </div>
     </div>
 
-    <script src="../src/js/journal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

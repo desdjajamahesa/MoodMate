@@ -84,6 +84,7 @@
   max-height: 250px; /* Atur tinggi maksimum sebelum scroll muncul */
   overflow-y: auto; /* Tambahkan scrollbar vertikal jika opsi melebihi tinggi maksimum */
   padding-right: 10px; /* Berikan sedikit padding untuk estetika */
+  padding-left: 10px; 
 }
 
 .depression-container .form-check {
