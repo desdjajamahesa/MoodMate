@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MoodMate Login</title>
   <!-- Link Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     /* Global CSS sesuai permintaan */
@@ -31,7 +32,9 @@
       justify-content: center;
       align-items: center;
     }
-
+    .head{
+      color: #f7f7f7;
+    }
     .card {
       background-color: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.25);
@@ -61,7 +64,7 @@
       color: var(--light-text);
       text-decoration: none;
     }
-
+   
     .btn-link:hover {
       color: var(--dark-text);
       text-decoration: underline;
@@ -73,11 +76,12 @@
   <!-- Container Utama -->
   <div class="card" style="max-width: 500px;">
     <!-- Tombol Back ke Landing Page -->
-    <div class="mb-3">
-      <a href="../index.php" class="btn btn-secondary">&larr;</a>
-    </div>
-
-    <h2 class="text-center mb-4">Login</h2>
+    <div class="mb-2">
+  <a href="../index.php" style="font-size: 2rem; color: white; text-decoration: none;">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+</div>
+    <h2 class="head text-center mb-4">LOGIN</h2>
 
     <?php
     // Menampilkan pesan error jika ada
