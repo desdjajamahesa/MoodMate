@@ -425,6 +425,7 @@
         <!-- Logo dan Deskripsi -->
         <div class="col-md-8">
           <h5 class="fw-bold">MoodMate</h5>
+          <p class="text-muted">Supporting You, Whatever You Feel</p>
           <p>Designed and built with all the love in the world by Meepoo to client.</p>
           <p>Copyright Meepoo 2024</p>
         </div>

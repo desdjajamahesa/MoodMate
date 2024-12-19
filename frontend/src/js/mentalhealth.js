@@ -35,7 +35,8 @@ const questionnaires = {
     scoreMap: [1, 2, 3, 4],
   },
   Stress: {
-    cardText: "Perceived Stress Scale (PSS) adalah instrumen psikologis yang paling banyak digunakan untuk mengukur persepsi stress.",
+    cardText:
+      "Perceived Stress Scale adalah alat skrining yang dirancang untuk mengukur persepsi seseorang terhadap stres dalam kehidupannya. PSS pertama kali diperkenalkan oleh Sheldon Cohen pada tahun 1983 dan telah digunakan secara luas dalam berbagai penelitian untuk mengukur persepsi stres dalam populasi yang berbeda. Tes ini terdiri dari sepuluh pertanyaan yang mengevaluasi seberapa sering seseorang merasa kewalahan, tidak terkendali, atau tertekan oleh situasi dalam sebulan terakhir.",
     description: "Questioner ini bertujuan untuk mengetahui tingkat stress Anda.",
     questions: [
       "Selama sebulan terakhir, seberapa sering Anda marah karena sesuatu yang tidak terduga",
@@ -382,17 +383,19 @@ function nextQuestion() {
   }
 }
 
-
 function displayResult() {
   const totalScore = userAnswers.reduce((a, b) => a + b, 0);
   const result = currentQuestionnaire.scores.find((score) => totalScore >= score.min && totalScore <= score.max);
 
   document.getElementById("question-container").innerHTML = `
-    <h4 class="fw-bold">Hasil Questioner</h4>
-    <p class="fs-5">Skor Anda: <strong>${totalScore}</strong></p>
-    <p class="fs-5">Tingkat: <strong>${result.level}</strong></p>
-    <button class="btn btn-success mt-3" onclick="resetQuestionnaire()">Selesai</button>
-  `;
+  <h4 class="fw-bold">Hasil Questioner</h4>
+  <p class="fs-5">Skor Anda: <strong>${totalScore}</strong></p>
+  <p class="fs-5">Tingkat: <strong>${result.level}</strong></p>
+  <div class="d-flex justify-content-center gap-3 mt-3">
+    <button class="btn btn-success" onclick="resetQuestionnaire()">Selesai</button>
+    <a href="../../frontend/dashboard/article.php" class="btn btn-primary">Kunjungi Artikel Terkait</a>
+  </div>
+`;
   isRunning = false;
   enableButtons();
 }

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_bind_param($stmt, "is", $user_id, $content);
 
     if (mysqli_stmt_execute($stmt)) {
-        header("Location: index.php?success=1");
+        header("Location: ../frontend/dashboard/journal.php");
     } else {
         echo "Gagal menyimpan jurnal.";
     }

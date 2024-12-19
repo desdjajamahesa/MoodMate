@@ -52,9 +52,9 @@ session_start();
           </div>
 
           <!-- Riwayat Button -->
-          <div class="text-center">
+          <!-- <div class="text-center">
             <button id="riwayatBtn" class="btn btn-primary rounded-pill px-4 py-2">Cek Data Mood Kamu</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

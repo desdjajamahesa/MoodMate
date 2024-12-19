@@ -1,7 +1,27 @@
-// Variabel global
+document.addEventListener("DOMContentLoaded", function () {
+  // Pastikan elemen ada sebelum event listener ditambahkan
+  const riwayatBtn = document.getElementById("riwayatBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function () {
+      renderMoodOptionsPage(selectedMood);
+    });
+  }
+
+  if (riwayatBtn) {
+    riwayatBtn.addEventListener("click", loadMoodHistory);
+  } else {
+    console.error("Element with ID 'riwayatBtn' not found.");
+  }
+});
+
+
 let selectedMood = 4; // Default mood
 let selectedOptions = []; // Pilihan mood di Second Page
-let selectedActivities = []; // Aktivitas dan orang di Final Page
+let selectedActivities = []; // Aktivitas di Final Page
+let selectedPersons = []; // Orang/lingkungan di Final Page
+
 
 // Data mood options
 const moodOptions = {
@@ -88,7 +108,7 @@ function renderMoodOptionsPage(moodValue) {
 
   moodTrackerWrapper.innerHTML = `
     <div class="mood-tracker p-4">
-      <h3 class="fw-bold mb-4 text-center">Apa yang paling menggambarkan perasaan Anda?</h3>
+      <h6 class="fw-bold mb-4 text-center">Apa yang paling menggambarkan perasaan Anda?</h6>
       <div id="optionsContainer" class="mood-options mb-4">
         ${options.map((option, index) => `
           <div class="option-item">
@@ -119,14 +139,16 @@ function renderMoodOptionsPage(moodValue) {
   });
 }
 
-// Halaman ketiga: Aktivitas dan orang
 function renderActivityPage() {
   const moodTrackerWrapper = document.querySelector(".mood-tracker-wrapper");
 
   moodTrackerWrapper.innerHTML = `
     <div class="mood-tracker p-4">
-      <h3 class="fw-bold text-center mb-4">Apa yang memberikan dampak terbesar bagi kamu?</h3>
+      <h6 class="fw-bold text-center mb-4">Apa yang memberikan dampak terbesar bagi kamu?</h6>
+      
+      <!-- Activity Options -->
       <div id="activityContainer" class="mood-options mb-4">
+        <h6 class="fw-semibold mb-3">Pilih aktivitas:</h6>
         ${activityOptions.map((activity, index) => `
           <div class="option-item">
             <input class="form-check-input" type="checkbox" id="activity-${index}" value="${activity}">
@@ -134,31 +156,136 @@ function renderActivityPage() {
           </div>
         `).join('')}
       </div>
+
+      <!-- Person Options -->
+      <div id="personContainer" class="mood-options mb-4">
+        <h6 class="fw-semibold mb-3">Atau lingkungan?</h6>
+        ${personOptions.map((person, index) => `
+          <div class="option-item">
+            <input class="form-check-input" type="checkbox" id="person-${index}" value="${person}">
+            <label class="form-check-label" for="person-${index}">${person}</label>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Done Button -->
       <div class="text-center mt-4">
         <button id="doneBtn" class="btn btn-primary rounded-pill px-4 py-2">Selesai</button>
       </div>
     </div>
   `;
 
-  document.querySelectorAll(".form-check-input").forEach((input) => {
+  // Event listener untuk checkbox activity
+  document.querySelectorAll("#activityContainer .form-check-input").forEach((input) => {
     input.addEventListener("change", function () {
-      selectedActivities = Array.from(document.querySelectorAll(".form-check-input:checked"))
+      selectedActivities = Array.from(document.querySelectorAll("#activityContainer .form-check-input:checked"))
         .map(input => input.value);
     });
   });
 
+  // Event listener untuk checkbox person
+  document.querySelectorAll("#personContainer .form-check-input").forEach((input) => {
+    input.addEventListener("change", function () {
+      selectedPersons = Array.from(document.querySelectorAll("#personContainer .form-check-input:checked"))
+        .map(input => input.value);
+    });
+  });
+
+  // Button Done
   document.getElementById("doneBtn").addEventListener("click", renderFinalPage);
 }
 
-// Halaman terakhir: Konfirmasi
+
 function renderFinalPage() {
   const moodTrackerWrapper = document.querySelector(".mood-tracker-wrapper");
 
   moodTrackerWrapper.innerHTML = `
     <div class="mood-tracker p-4 text-center">
       <h3 class="fw-bold mb-4">Mood Tracking Selesai!</h3>
-      <p class="fs-5 mb-4">Terima kasih sudah menggunakan Mood Tracker hari ini.</p>
-      <button class="btn btn-primary rounded-pill px-4 py-2" onclick="location.reload()">Selesai</button>
+      <p class="fs-5 mb-3">Terima kasih sudah menggunakan Mood Tracker hari ini.</p>
+
+      <!-- Tampilkan hasil -->
+      <div class="text-start mt-4">
+        <p><strong>Mood Utama :</strong> ${moodMap[selectedMood][1]}</p>
+        <p><strong>Perasaan Kamu :</strong> ${selectedOptions.join(", ") || "Tidak ada"}</p>
+        <p><strong>Aktivitas yang dipilih :</strong> ${selectedActivities.join(", ") || "Tidak ada"}</p>
+        <p><strong>Lingkungan/Orang yang dipilih :</strong> ${selectedPersons.join(", ") || "Tidak ada"}</p>
+      </div>
+
+      <!-- Button Selesai -->
+      <button class="btn btn-primary rounded-pill px-4 py-2 mt-4" onclick="location.reload()">Selesai</button>
     </div>
   `;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Fungsi untuk menyimpan data ke database
+  function saveMoodToDatabase() {
+    const payload = {
+      mood_value: selectedMood,
+      mood_options: selectedOptions.join(", "),
+      activities: selectedActivities.join(", "),
+      persons: selectedPersons.join(", "),
+    };
+
+    console.log("Payload:", payload);
+
+    fetch("../../backend/process_mood.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          alert("Mood berhasil disimpan!");
+          renderFinalPage(); // Tampilkan halaman konfirmasi
+        } else {
+          alert("Error: " + data.error);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  // Tombol Done untuk menyimpan ke database
+  document.getElementById("doneBtn").addEventListener("click", saveMoodToDatabase);
+
+  // Tombol "Cek Data Mood Kamu"
+  document.getElementById("riwayatBtn").addEventListener("click", loadMoodHistory);
+
+  // Fungsi untuk menampilkan history mood
+  function loadMoodHistory() {
+    fetch("../../backend/get_mood.php")
+      .then((response) => response.json())
+      .then((data) => {
+        const moodTrackerWrapper = document.querySelector(".mood-tracker-wrapper");
+        if (data.length > 0) {
+          moodTrackerWrapper.innerHTML = `
+            <div class="mood-tracker p-4">
+              <h3 class="fw-bold mb-4 text-center">Riwayat Mood Kamu</h3>
+              <ul class="list-group">
+                ${data
+                  .map(
+                    (entry) => `
+                  <li class="list-group-item">
+                    <strong>${entry.timestamp}</strong> - Mood: ${entry.mood_value}, 
+                    Perasaan: ${entry.mood_options}, 
+                    Aktivitas: ${entry.activities}, 
+                    Lingkungan: ${entry.persons}
+                  </li>
+                `
+                  )
+                  .join("")}
+              </ul>
+              <div class="text-center mt-4">
+                <button class="btn btn-primary rounded-pill px-4 py-2" onclick="location.reload()">Kembali</button>
+              </div>
+            </div>
+          `;
+        } else {
+          alert("Belum ada data mood yang tersimpan.");
+        }
+      })
+      .catch((error) => console.error("Error loading history:", error));
+  }
+});

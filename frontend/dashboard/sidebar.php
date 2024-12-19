@@ -7,7 +7,7 @@ $currentPage = basename($_SERVER['PHP_SELF']); // Mendapatkan nama file saat ini
     <div class="header-sidebar text-center">
         <img src="../src/assets/images/MoodMate-Logo.png" alt="MoodMate" class="sidebar-logo" />
         <h6 class="welcome-text">Selamat Datang, <?php echo htmlspecialchars($_SESSION['user_name']); ?></h6>
-        <p class="tagline-moodmate">"Lacak Perasaanmu dan Temukan Ketenangan"</p>
+        <p class="tagline-moodmate">"A Better Mind, A Better You !"</p>
         <hr class="divider">
     </div>
     <div class="sidebar-menu fw-semibold">
